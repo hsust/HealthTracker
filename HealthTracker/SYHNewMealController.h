@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface SYHNewMealController : UIViewController
+{
+    IBOutlet UITextField *timeField;
+    IBOutlet UITextField *mealField;
+    
+    
+}
+@property (strong) UITapGestureRecognizer *tapRecognizer;
 
 @end
