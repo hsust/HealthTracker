@@ -11,6 +11,7 @@
 @interface SYHMealsViewController ()
 
 - (IBAction)insertNewMeal:(UIButton *) sender;
+- (IBAction)seePreviousMeals:(UIButton *)sender;
 
 @end
 
@@ -26,6 +27,11 @@
 - (IBAction)insertNewMeal:(UIButton *)sender
 {
     [self performSegueWithIdentifier:@"NewMeal" sender:self];
+}
+
+- (IBAction)seePreviousMeals:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"PreviousMeals" sender:self];
 }
 
 - (void)didReceiveMemoryWarning

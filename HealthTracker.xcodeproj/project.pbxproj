@@ -22,6 +22,7 @@
 		1B0151F31831BDAA00CF9F08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151D21831BDA900CF9F08 /* UIKit.framework */; };
 		1B0151FB1831BDAA00CF9F08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151F91831BDAA00CF9F08 /* InfoPlist.strings */; };
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
+		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		1B0151F81831BDAA00CF9F08 /* HealthTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HealthTrackerTests-Info.plist"; sourceTree = "<group>"; };
 		1B0151FA1831BDAA00CF9F08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthTrackerTests.m; sourceTree = "<group>"; };
+		CE9EA0D61831C606004177BE /* SYHNewMealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHNewMealController.h; sourceTree = "<group>"; };
+		CE9EA0D71831C606004177BE /* SYHNewMealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHNewMealController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
 				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
 				1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */,
+				CE9EA0D61831C606004177BE /* SYHNewMealController.h */,
+				CE9EA0D71831C606004177BE /* SYHNewMealController.m */,
 				1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */,
 				1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */,
 				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
@@ -257,6 +262,7 @@
 			files = (
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
 				1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */,
+				CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */,
 			);

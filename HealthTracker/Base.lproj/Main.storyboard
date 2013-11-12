@@ -67,6 +67,9 @@
                                 <state key="normal" title="See Previous">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="seePreviousMeals:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="i0P-ZB-Sic"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -75,7 +78,7 @@
                     <tabBarItem key="tabBarItem" title="Meals" image="first" id="u1e-5L-l1D"/>
                     <connections>
                         <segue destination="4M5-Yi-9Zf" kind="modal" identifier="NewMeal" id="GGr-Cu-d0h"/>
-                        <segue destination="mgs-el-9tV" kind="modal" id="6p7-HG-dgU"/>
+                        <segue destination="mgs-el-9tV" kind="modal" identifier="PreviousMeals" id="6p7-HG-dgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
@@ -132,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="523" y="-1082"/>
         </scene>
-        <!--View Controller-->
+        <!--New Meal Controller-->
         <scene sceneID="fz2-d8-Olj">
             <objects>
-                <viewController id="4M5-Yi-9Zf" sceneMemberID="viewController">
+                <viewController id="4M5-Yi-9Zf" customClass="SYHNewMealController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ylx-l2-ySj"/>
                         <viewControllerLayoutGuide type="bottom" id="yKg-m2-Eud"/>
@@ -187,6 +190,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissModal:" destination="4M5-Yi-9Zf" eventType="touchUpInside" id="QCB-o3-KBp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
