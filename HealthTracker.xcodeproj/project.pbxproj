@@ -14,7 +14,7 @@
 		1B0151DB1831BDA900CF9F08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151DA1831BDA900CF9F08 /* main.m */; };
 		1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */; };
 		1B0151E21831BDA900CF9F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E01831BDA900CF9F08 /* Main.storyboard */; };
-		1B0151E51831BDA900CF9F08 /* SYHFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E41831BDA900CF9F08 /* SYHFirstViewController.m */; };
+		1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */; };
 		1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */; };
 		1B0151EA1831BDAA00CF9F08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E91831BDAA00CF9F08 /* Images.xcassets */; };
 		1B0151F11831BDAA00CF9F08 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151F01831BDAA00CF9F08 /* XCTest.framework */; };
@@ -46,8 +46,8 @@
 		1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHAppDelegate.h; sourceTree = "<group>"; };
 		1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHAppDelegate.m; sourceTree = "<group>"; };
 		1B0151E11831BDA900CF9F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1B0151E31831BDA900CF9F08 /* SYHFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHFirstViewController.h; sourceTree = "<group>"; };
-		1B0151E41831BDA900CF9F08 /* SYHFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHFirstViewController.m; sourceTree = "<group>"; };
+		1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHMealsViewController.h; sourceTree = "<group>"; };
+		1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHMealsViewController.m; sourceTree = "<group>"; };
 		1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHSecondViewController.h; sourceTree = "<group>"; };
 		1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHSecondViewController.m; sourceTree = "<group>"; };
 		1B0151E91831BDAA00CF9F08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 				1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */,
 				1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
-				1B0151E31831BDA900CF9F08 /* SYHFirstViewController.h */,
-				1B0151E41831BDA900CF9F08 /* SYHFirstViewController.m */,
+				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
+				1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */,
 				1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */,
 				1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */,
 				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
@@ -256,7 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
-				1B0151E51831BDA900CF9F08 /* SYHFirstViewController.m in Sources */,
+				1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */,
 			);
@@ -461,6 +461,7 @@
 				1B0152021831BDAA00CF9F08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B0152031831BDAA00CF9F08 /* Build configuration list for PBXNativeTarget "HealthTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +470,7 @@
 				1B0152051831BDAA00CF9F08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

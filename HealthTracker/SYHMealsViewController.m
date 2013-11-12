@@ -6,18 +6,26 @@
 //  Copyright (c) 2013 Stephanie Hsu. All rights reserved.
 //
 
-#import "SYHFirstViewController.h"
+#import "SYHMealsViewController.h"
 
-@interface SYHFirstViewController ()
+@interface SYHMealsViewController ()
+
+- (IBAction)insertNewMeal:(UIButton *) sender;
 
 @end
 
-@implementation SYHFirstViewController
+@implementation SYHMealsViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (IBAction)insertNewMeal:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"NewMeal" sender:self];
 }
 
 - (void)didReceiveMemoryWarning

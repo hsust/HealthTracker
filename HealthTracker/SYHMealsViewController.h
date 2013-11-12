@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SYHFirstViewController : UIViewController
+@interface SYHMealsViewController : UIViewController
+{
+    
+}
 
 @end
