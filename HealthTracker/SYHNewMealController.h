@@ -15,6 +15,6 @@
     
     
 }
-@property (strong) UITapGestureRecognizer *tapRecognizer;
+
 
 @end

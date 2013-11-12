@@ -13,6 +13,7 @@
 - (IBAction)dismissModal:(UIButton *) sender;
 - (IBAction)submitNewMeal:(UIButton *)sender;
 - (void) resignKeyboard:(id) sender;
+@property (strong) UITapGestureRecognizer *tapRecognizer;
 
 
 
