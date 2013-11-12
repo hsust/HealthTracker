@@ -25,6 +25,7 @@
 		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 		CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */; };
 		CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */; };
+		CE9EA0E01831D5A6004177BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9EA0DF1831D5A6004177BE /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealObject.m; sourceTree = "<group>"; };
 		CE9EA0DC1831D2DD004177BE /* SYHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHDataManager.h; sourceTree = "<group>"; };
 		CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHDataManager.m; sourceTree = "<group>"; };
+		CE9EA0DF1831D5A6004177BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9EA0E01831D5A6004177BE /* CoreData.framework in Frameworks */,
 				1B0151D11831BDA900CF9F08 /* CoreGraphics.framework in Frameworks */,
 				1B0151D31831BDA900CF9F08 /* UIKit.framework in Frameworks */,
 				1B0151CF1831BDA900CF9F08 /* Foundation.framework in Frameworks */,
@@ -113,6 +116,7 @@
 		1B0151CD1831BDA900CF9F08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE9EA0DF1831D5A6004177BE /* CoreData.framework */,
 				1B0151CE1831BDA900CF9F08 /* Foundation.framework */,
 				1B0151D01831BDA900CF9F08 /* CoreGraphics.framework */,
 				1B0151D21831BDA900CF9F08 /* UIKit.framework */,
@@ -127,11 +131,11 @@
 				1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */,
 				1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
-				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
 				CE9EA0D91831C9F8004177BE /* SYHMealObject.h */,
 				CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */,
 				CE9EA0DC1831D2DD004177BE /* SYHDataManager.h */,
 				CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */,
+				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
 				1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */,
 				CE9EA0D61831C606004177BE /* SYHNewMealController.h */,
 				CE9EA0D71831C606004177BE /* SYHNewMealController.m */,

@@ -7,9 +7,34 @@
 //
 
 #import "SYHDataManager.h"
-#import "SYHMealObject.h"
+
+
+@interface SYHDataManager ()
+
+@property (nonatomic,strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic,strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic,strong) NSPersistentStoreCoordinator *persistentStorecoordinator;
+
+@end
 
 @implementation SYHDataManager
+
+- (BOOL) addMealWithData:(SYHMealObject *)newMeal
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    SYHMealObject *newMealObject = [NSEntityDescription insertNewObjectForEntityForName:@"MyMeal" inManagedObjectContext:context];
+    [newMealObject setValue:newMealObject.mealTime forKey:@"MealTime"];
+    [newMealObject setValue:newMealObject.meals forKey:@"Meals"];
+
+    NSError *error;
+    if (![context save:&error]) {
+        return NO;
+    }
+    
+    // TODO: Continue here and figure out whether this is working or not now that we have implemented date picker.
+    NSLog(@"Added in meal with data");
+    return YES;
+}
 
 //- (NSArray *) allMeals
 //{

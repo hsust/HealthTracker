@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "SYHMealObject.h"
+#import <CoreData/CoreData.h>
+
 
 @interface SYHDataManager : NSObject
 
 
-- (void) addMealWithData : (SYHMealObject *) newMeal;
+- (BOOL) addMealWithData : (SYHMealObject *) newMeal;
 - (NSArray *) allMeals;
 
 @end

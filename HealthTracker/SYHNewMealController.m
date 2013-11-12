@@ -8,6 +8,7 @@
 
 #import "SYHNewMealController.h"
 #import "SYHMealObject.h"
+#import "SYHDataManager.h"
 
 @interface SYHNewMealController ()
 - (IBAction)dismissModal:(UIButton *) sender;
@@ -47,18 +48,45 @@
     
     else {
         SYHMealObject *mealObject = [[SYHMealObject alloc] initWithTime:[NSDate date] AndMeal:mealField.text];
+//        SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
+//        if (![myMealDataManager addMealWithData:mealObject]) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }
+//        else {
+//            UIAlertView *missingFields = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            
+//            [missingFields show];
+//        }
     }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Date picker
+    UIDatePicker *myDatePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 200, 320, 200)];
+    [myDatePicker addTarget:self
+                     action:@selector(pickerChanged:)
+           forControlEvents:UIControlEventValueChanged];
+    myDatePicker.maximumDate = [NSDate date];
+    timeField.inputView = myDatePicker;
+    
+    
+    // Tap recognizer to dismiss keyboard
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 
+}
+
+- (void)pickerChanged:(id)sender
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a, MMM. dd"];
+    timeField.text = [dateFormatter stringFromDate:[sender date]];
 }
 
 - (void) keyboardWillShow : (NSNotification *)note
