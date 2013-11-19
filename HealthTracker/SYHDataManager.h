@@ -16,6 +16,7 @@
 
 
 - (BOOL) addMealWithData : (SYHMealObject *) newMeal;
+
 - (NSArray *) allMeals;
 
 @end

@@ -37,6 +37,17 @@
     return YES;
 }
 
+- (NSArray *) allMeals
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Meals" inManagedObjectContext:context];
+    fetchRequest.entity = entity;
+    NSError *error;
+    NSArray *fetchedResults = [context executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedResults;
+}
 
 -(NSManagedObjectContext *)managedObjectContext
 {
