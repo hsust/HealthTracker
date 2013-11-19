@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SYHMealType.h"
 
 @interface SYHMealObject : NSObject
 
 @property (nonatomic,strong) NSDate *mealTime;
-@property (nonatomic,strong) NSMutableArray *meals;
-
-- (id) initWithTime: (NSDate *) theTime AndMeal: (NSString *) theMeal;
+@property (nonatomic,strong) NSString *meals;
 
 @end

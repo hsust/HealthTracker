@@ -47,16 +47,23 @@
     }
     
     else {
-        SYHMealObject *mealObject = [[SYHMealObject alloc] initWithTime:[NSDate date] AndMeal:mealField.text];
-//        SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
-//        if (![myMealDataManager addMealWithData:mealObject]) {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }
-//        else {
-//            UIAlertView *missingFields = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//            
-//            [missingFields show];
-//        }
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"hh:mm a, MM/dd/YY"];
+        NSDate *date = [formatter dateFromString:timeField.text];
+        
+        SYHMealObject *newMeal = [[SYHMealObject alloc] init];
+        newMeal.mealTime = date;
+        newMeal.meals = mealField.text;
+        
+        SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
+
+        if ([myMealDataManager addMealWithData:newMeal]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            UIAlertView *missingFields = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            
+            [missingFields show];
+        }
     }
 }
 
@@ -85,7 +92,7 @@
 - (void)pickerChanged:(id)sender
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mm a, MMM. dd"];
+    [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
     timeField.text = [dateFormatter stringFromDate:[sender date]];
 }
 

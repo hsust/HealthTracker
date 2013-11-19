@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Meals.h"
 #import "SYHMealObject.h"
 #import <CoreData/CoreData.h>
 

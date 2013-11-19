@@ -8,6 +8,7 @@
 
 #import "SYHDataManager.h"
 
+#define kEntityName @"Meals"
 
 @interface SYHDataManager ()
 
@@ -22,9 +23,10 @@
 - (BOOL) addMealWithData:(SYHMealObject *)newMeal
 {
     NSManagedObjectContext *context = self.managedObjectContext;
-    SYHMealObject *newMealObject = [NSEntityDescription insertNewObjectForEntityForName:@"MyMeal" inManagedObjectContext:context];
-    [newMealObject setValue:newMealObject.mealTime forKey:@"MealTime"];
-    [newMealObject setValue:newMealObject.meals forKey:@"Meals"];
+    Meals *mealToStore = [NSEntityDescription insertNewObjectForEntityForName:kEntityName
+                                                                 inManagedObjectContext:context];
+    mealToStore.mealTime = newMeal.mealTime;
+    mealToStore.meals = newMeal.meals;
 
     NSError *error;
     if (![context save:&error]) {
@@ -32,14 +34,9 @@
     }
     
     // TODO: Continue here and figure out whether this is working or not now that we have implemented date picker.
-    NSLog(@"Added in meal with data");
     return YES;
 }
 
-//- (NSArray *) allMeals
-//{
-//    
-//}
 
 -(NSManagedObjectContext *)managedObjectContext
 {
@@ -50,14 +47,15 @@
     return _managedObjectContext;
 }
 
-//create data model in GUI. this is what data is supposed to look like
+// Returns the managed object model for the application.
+// If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (!_managedObjectModel) {
-        //grab data from app and load into model
-        NSURL *storeURL = [[NSBundle mainBundle] URLForResource:@"UserModel" withExtension:@"momd"];
-        _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:storeURL];
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
     }
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"MealModel" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
 
@@ -65,10 +63,11 @@
 - (NSPersistentStoreCoordinator *)persistentStorecoordinator
 {
     if (!_persistentStorecoordinator) {
-        NSURL *storeURL = [[self applicationDirectory] URLByAppendingPathComponent:@"Users.sqlite"];
+        NSURL *storeURL = [[self applicationDirectory] URLByAppendingPathComponent:@"Meals.sqlite"];
         
         NSError *error;
         _persistentStorecoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+
         [_persistentStorecoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
     }
     return _persistentStorecoordinator;

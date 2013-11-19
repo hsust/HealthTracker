@@ -7,18 +7,24 @@
 //
 
 #import "SYHMealObject.h"
+#import "SYHMealType.h"
 
 @implementation SYHMealObject
 
-- (id) initWithTime: (NSDate *) theTime AndMeal: (NSString *) theMeal
+- (id) initWithCoder: (NSCoder *) decoder
 {
-    if (self = [super init]) {
-        _mealTime = theTime;
-        _meals = [NSMutableArray arrayWithArray:[theMeal componentsSeparatedByString:@","]];
+    if(self = [self init]){
+        _mealTime = [decoder decodeObjectForKey: @"mealTime"];
+        _meals = [decoder decodeObjectForKey: @"meals"];
     }
-    
-    NSLog(@"%@ %@", theTime, theMeal);
     return self;
 }
+
+- (void)encodeWithCoder: (NSCoder *)encoder
+{
+    [encoder encodeObject:self.mealTime forKey: @"mealTime"];
+    [encoder encodeObject:self.meals forKey: @"meals"];
+}
+
 
 @end
