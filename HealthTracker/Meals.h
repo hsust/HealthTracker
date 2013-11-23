@@ -2,7 +2,7 @@
 //  Meals.h
 //  HealthTracker
 //
-//  Created by User on 11/18/13.
+//  Created by User on 11/23/13.
 //  Copyright (c) 2013 Stephanie Hsu. All rights reserved.
 //
 
@@ -12,7 +12,8 @@
 
 @interface Meals : NSManagedObject
 
-@property (nonatomic, retain) NSDate * mealTime;
 @property (nonatomic, retain) NSString * meals;
+@property (nonatomic, retain) NSDate * mealTime;
+//@property (nonatomic, retain) NSNumber * mealType;
 
 @end

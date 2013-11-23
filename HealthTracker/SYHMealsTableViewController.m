@@ -12,7 +12,7 @@
 @interface SYHMealsTableViewController ()
 
 @property (nonatomic,strong) SYHDataManager *myDataManager;
-@property (nonatomic,strong) NSArray *allMeals;
+@property (nonatomic,strong) NSMutableArray *allMeals;
 
 @end
 
@@ -26,23 +26,31 @@
     return _myDataManager;
 }
 
-- (NSArray *) allMeals
+- (NSMutableArray *) allMeals
 {
     if (!_allMeals) {
-        _allMeals = [self.myDataManager allMeals];
+        _allMeals = [[NSMutableArray alloc] initWithArray: [self.myDataManager allMeals]];
     }
     return _allMeals;
+}
+
+- (IBAction)dismissModal:(UIBarButtonItem *) sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+//    NSLog(@"%@", self.navigationController);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,40 +78,43 @@
     static NSString *CellIdentifier = @"MealCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    Meals *currentMeal = [self.allMeals objectAtIndex:indexPath.row];
+    SYHMealObject *currentMeal = [self.allMeals objectAtIndex:indexPath.row];
     
     UILabel *timeLabel = (id)[cell viewWithTag:7];
-    UILabel *foodLabel = (id)[cell viewWithTag:8];
-    foodLabel.text = currentMeal.meals;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
     timeLabel.text = [dateFormatter stringFromDate:currentMeal.mealTime];
     
+    UILabel *foodLabel = (id)[cell viewWithTag:8];
+    foodLabel.text = currentMeal.meals;
+    
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.myDataManager deleteMeal:[self.allMeals objectAtIndex:indexPath.row] ];
+        [self.allMeals removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

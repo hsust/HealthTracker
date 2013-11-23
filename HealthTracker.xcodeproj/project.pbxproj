@@ -23,8 +23,8 @@
 		1B0151FB1831BDAA00CF9F08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151F91831BDAA00CF9F08 /* InfoPlist.strings */; };
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
-		CE4996C3183B22660011CB6A /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C2183B22660011CB6A /* Meals.m */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
+		CE6B719F1841247300517394 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6B719E1841247300517394 /* Meals.m */; };
 		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 		CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */; };
 		CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */; };
@@ -65,10 +65,10 @@
 		1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthTrackerTests.m; sourceTree = "<group>"; };
 		CE4996BA183B1A320011CB6A /* SYHMealType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealType.h; sourceTree = "<group>"; };
 		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
-		CE4996C1183B22660011CB6A /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Meals.h; path = ../Meals.h; sourceTree = "<group>"; };
-		CE4996C2183B22660011CB6A /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Meals.m; path = ../Meals.m; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
 		CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsTableViewController.m; sourceTree = "<group>"; };
+		CE6B719D1841247300517394 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
+		CE6B719E1841247300517394 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
 		CE9EA0D61831C606004177BE /* SYHNewMealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHNewMealController.h; sourceTree = "<group>"; };
 		CE9EA0D71831C606004177BE /* SYHNewMealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHNewMealController.m; sourceTree = "<group>"; };
 		CE9EA0D91831C9F8004177BE /* SYHMealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealObject.h; sourceTree = "<group>"; };
@@ -138,11 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */,
-				CE4996C1183B22660011CB6A /* Meals.h */,
-				CE4996C2183B22660011CB6A /* Meals.m */,
+				CE6B719D1841247300517394 /* Meals.h */,
+				CE6B719E1841247300517394 /* Meals.m */,
 				1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */,
 				1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */,
-				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
 				CE9EA0D91831C9F8004177BE /* SYHMealObject.h */,
 				CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */,
 				CE4996BA183B1A320011CB6A /* SYHMealType.h */,
@@ -156,6 +155,7 @@
 				CE9EA0D71831C606004177BE /* SYHNewMealController.m */,
 				1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */,
 				1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */,
+				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
 				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
 				1B0151D51831BDA900CF9F08 /* Supporting Files */,
 			);
@@ -294,9 +294,9 @@
 				CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */,
 				CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */,
 				CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */,
+				CE6B719F1841247300517394 /* Meals.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */,
-				CE4996C3183B22660011CB6A /* Meals.m in Sources */,
 				CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */,
 				1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */,
 			);

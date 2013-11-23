@@ -27,13 +27,13 @@
                                                                  inManagedObjectContext:context];
     mealToStore.mealTime = newMeal.mealTime;
     mealToStore.meals = newMeal.meals;
+//    mealToStore.mealType = newMeal.mealType;
 
     NSError *error;
     if (![context save:&error]) {
         return NO;
     }
-    
-    // TODO: Continue here and figure out whether this is working or not now that we have implemented date picker.
+
     return YES;
 }
 
@@ -47,6 +47,19 @@
     NSArray *fetchedResults = [context executeFetchRequest:fetchRequest error:&error];
     
     return fetchedResults;
+}
+
+-(BOOL) deleteMeal:(Meals *) meal
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    [context deleteObject:meal];
+    
+    NSError *error;
+    if (![context save:&error]){
+        //error
+        return NO;
+    }
+    return YES;
 }
 
 -(NSManagedObjectContext *)managedObjectContext
@@ -73,14 +86,33 @@
 //create sqlite database
 - (NSPersistentStoreCoordinator *)persistentStorecoordinator
 {
-    if (!_persistentStorecoordinator) {
-        NSURL *storeURL = [[self applicationDirectory] URLByAppendingPathComponent:@"Meals.sqlite"];
-        
-        NSError *error;
-        _persistentStorecoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-
-        [_persistentStorecoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+    
+//    if (!_persistentStorecoordinator) {
+//        NSURL *storeURL = [[self applicationDirectory] URLByAppendingPathComponent:@"Meals.sqlite"];
+//        
+//        NSError *error;
+//        _persistentStorecoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+//
+//        [_persistentStorecoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+//    }
+//    return _persistentStorecoordinator;
+    
+    if (_persistentStorecoordinator != nil) {
+        return _persistentStorecoordinator;
     }
+    
+    NSURL *storeUrl = [[self applicationDirectory] URLByAppendingPathComponent:@"Meals.sqlite"];
+    
+    NSError *error = nil;
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+    						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    _persistentStorecoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    if (![_persistentStorecoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
+        // Handle error
+        NSLog(@"%@", error);
+    }
+    
     return _persistentStorecoordinator;
 }
 

@@ -2,7 +2,7 @@
 //  Meals.m
 //  HealthTracker
 //
-//  Created by User on 11/18/13.
+//  Created by User on 11/23/13.
 //  Copyright (c) 2013 Stephanie Hsu. All rights reserved.
 //
 
@@ -11,7 +11,8 @@
 
 @implementation Meals
 
-@dynamic mealTime;
 @dynamic meals;
+@dynamic mealTime;
+//@dynamic mealType;
 
 @end

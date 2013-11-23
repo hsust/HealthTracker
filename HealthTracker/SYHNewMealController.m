@@ -54,9 +54,10 @@
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
+//        newMeal.mealType = @(1);
         
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
-
+        
         if ([myMealDataManager addMealWithData:newMeal]) {
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
@@ -79,6 +80,9 @@
     myDatePicker.maximumDate = [NSDate date];
     timeField.inputView = myDatePicker;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
+    timeField.text = [dateFormatter stringFromDate:[NSDate date]];
     
     // Tap recognizer to dismiss keyboard
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -110,6 +114,11 @@
 {
     [timeField resignFirstResponder];
     [mealField resignFirstResponder];
+}
+
+- (void) resignKeyboard:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

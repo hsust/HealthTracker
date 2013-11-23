@@ -12,8 +12,6 @@
 {
     IBOutlet UITextField *timeField;
     IBOutlet UITextField *mealField;
-    
-    
 }
 
 @end

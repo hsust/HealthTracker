@@ -10,12 +10,19 @@
 
 @protocol SYHMealType <NSObject>
 
-typedef enum
-{
-    BREAKFAST,
-    LUNCH,
-    DINNER,
-    SNACK
-} MealType;
+//typedef enum mealTypes
+//{
+//    MEALTYPE_BREAKFAST,
+//    MEALTYPE_LUNCH,
+//    MEALTYPE_DINNER,
+//    MEALTYPE_SNACK
+//} MealType;
+
+typedef NS_ENUM(NSUInteger, SYHMealType) {
+    MealTypeBreakfast = 0,
+    MealTypeLunch,
+    MealTypeDinner,
+    MealTypeSnack
+};
 
 @end

@@ -10,5 +10,5 @@
 #import "SYHDataManager.h"
 
 @interface SYHMealsTableViewController : UITableViewController
-
+- (IBAction)dismissModal:(UIBarButtonItem *) sender;
 @end

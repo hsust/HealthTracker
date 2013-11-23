@@ -78,7 +78,7 @@
                     <tabBarItem key="tabBarItem" title="Meals" image="first" id="u1e-5L-l1D"/>
                     <connections>
                         <segue destination="4M5-Yi-9Zf" kind="modal" identifier="NewMeal" id="GGr-Cu-d0h"/>
-                        <segue destination="bqr-0t-daV" kind="modal" identifier="PreviousMeals" id="vAN-eV-dNG"/>
+                        <segue destination="453-mu-cJd" kind="modal" identifier="PreviousMeals" id="vAN-eV-dNG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
@@ -150,20 +150,20 @@
             </objects>
             <point key="canvasLocation" x="-625" y="-1364"/>
         </scene>
-        <!--Meals Table View Controller-->
+        <!--Meals Table View Controller - All Meals-->
         <scene sceneID="zNN-6E-7qM">
             <objects>
                 <tableViewController id="bqr-0t-daV" customClass="SYHMealsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="131" sectionHeaderHeight="22" sectionFooterHeight="22" id="KdQ-WT-3MK">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="158" sectionHeaderHeight="22" sectionFooterHeight="22" id="KdQ-WT-3MK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCell" rowHeight="131" id="Ma6-5y-cKL">
-                                <rect key="frame" x="0.0" y="22" width="320" height="131"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCell" rowHeight="158" id="Ma6-5y-cKL">
+                                <rect key="frame" x="0.0" y="86" width="320" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ma6-5y-cKL" id="iK1-MN-Pgs">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPa-iC-xgS">
@@ -178,6 +178,13 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gX-nS-p5b">
+                                            <rect key="frame" x="34" y="109" width="78" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -187,10 +194,17 @@
                             <outlet property="delegate" destination="bqr-0t-daV" id="uBI-9u-D0a"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="All Meals" id="Xdj-5W-PUN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="lBb-ru-VxU">
+                            <connections>
+                                <action selector="dismissModal:" destination="bqr-0t-daV" id="17c-sZ-FuA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBd-bZ-1sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-1267"/>
+            <point key="canvasLocation" x="1461" y="-1267"/>
         </scene>
         <!--New Meal Controller-->
         <scene sceneID="fz2-d8-Olj">
@@ -308,9 +322,6 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Sleep" image="second" id="Z7h-1E-pvt"/>
-                    <connections>
-                        <segue destination="oZb-Fv-ypJ" kind="modal" id="DQ5-kz-Bdh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,6 +464,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-464" y="-504"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2en-za-3P4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="453-mu-cJd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zFz-Qe-vdQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bqr-0t-daV" kind="relationship" relationship="rootViewController" id="U92-H1-jo5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSW-JD-Vt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="-1267"/>
         </scene>
     </scenes>
     <resources>
