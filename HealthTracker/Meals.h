@@ -14,6 +14,6 @@
 
 @property (nonatomic, retain) NSString * meals;
 @property (nonatomic, retain) NSDate * mealTime;
-//@property (nonatomic, retain) NSNumber * mealType;
+@property (nonatomic, retain) NSNumber * mealType;
 
 @end

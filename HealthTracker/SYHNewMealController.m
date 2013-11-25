@@ -54,7 +54,7 @@
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
-//        newMeal.mealType = @(1);
+        newMeal.mealType = @(1);
         
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
         

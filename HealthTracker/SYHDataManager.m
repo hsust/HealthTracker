@@ -27,7 +27,7 @@
                                                                  inManagedObjectContext:context];
     mealToStore.mealTime = newMeal.mealTime;
     mealToStore.meals = newMeal.meals;
-//    mealToStore.mealType = newMeal.mealType;
+    mealToStore.mealType = newMeal.mealType;
 
     NSError *error;
     if (![context save:&error]) {
@@ -86,17 +86,6 @@
 //create sqlite database
 - (NSPersistentStoreCoordinator *)persistentStorecoordinator
 {
-    
-//    if (!_persistentStorecoordinator) {
-//        NSURL *storeURL = [[self applicationDirectory] URLByAppendingPathComponent:@"Meals.sqlite"];
-//        
-//        NSError *error;
-//        _persistentStorecoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-//
-//        [_persistentStorecoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
-//    }
-//    return _persistentStorecoordinator;
-    
     if (_persistentStorecoordinator != nil) {
         return _persistentStorecoordinator;
     }

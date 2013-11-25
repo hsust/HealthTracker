@@ -3,6 +3,7 @@
     <entity name="Meals" representedClassName="Meals" syncable="YES">
         <attribute name="meals" attributeType="String" syncable="YES"/>
         <attribute name="mealTime" attributeType="Date" syncable="YES"/>
+        <attribute name="mealType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Meals" positionX="0" positionY="0" width="0" height="0"/>

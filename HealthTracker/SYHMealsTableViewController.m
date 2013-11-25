@@ -88,6 +88,10 @@
     UILabel *foodLabel = (id)[cell viewWithTag:8];
     foodLabel.text = currentMeal.meals;
     
+    UILabel *typeLabel = (id)[cell viewWithTag:9];
+    typeLabel.text = [currentMeal.mealType stringValue];
+    
+    
     return cell;
 }
 

@@ -13,6 +13,6 @@
 
 @dynamic meals;
 @dynamic mealTime;
-//@dynamic mealType;
+@dynamic mealType;
 
 @end
