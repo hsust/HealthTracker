@@ -25,6 +25,8 @@
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
 		CE6BC4271842FD64000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC4261842FD64000F4918 /* Meals.m */; };
+		CE6BC45118431433000F4918 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */; };
+		CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45218431567000F4918 /* QuartzCore.framework */; };
 		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 		CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */; };
 		CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */; };
@@ -38,6 +40,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1B0151CA1831BDA900CF9F08;
 			remoteInfo = HealthTracker;
+		};
+		CE6BC44C18431412000F4918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE6BC44618431412000F4918 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		CE6BC44E18431419000F4918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE6BC44618431412000F4918 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,6 +85,9 @@
 		CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsTableViewController.m; sourceTree = "<group>"; };
 		CE6BC4251842FD64000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
 		CE6BC4261842FD64000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
+		CE6BC44618431412000F4918 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../Downloads/CorePlot_1.4/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Downloads/CorePlot_1.4/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		CE6BC45218431567000F4918 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE9EA0D61831C606004177BE /* SYHNewMealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHNewMealController.h; sourceTree = "<group>"; };
 		CE9EA0D71831C606004177BE /* SYHNewMealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHNewMealController.m; sourceTree = "<group>"; };
 		CE9EA0D91831C9F8004177BE /* SYHMealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealObject.h; sourceTree = "<group>"; };
@@ -83,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */,
+				CE6BC45118431433000F4918 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				CE9EA0E01831D5A6004177BE /* CoreData.framework in Frameworks */,
 				1B0151D11831BDA900CF9F08 /* CoreGraphics.framework in Frameworks */,
 				1B0151D31831BDA900CF9F08 /* UIKit.framework in Frameworks */,
@@ -106,6 +127,7 @@
 		1B0151C21831BDA900CF9F08 = {
 			isa = PBXGroup;
 			children = (
+				CE6BC44618431412000F4918 /* CorePlot-CocoaTouch.xcodeproj */,
 				1B0151D41831BDA900CF9F08 /* HealthTracker */,
 				1B0151F61831BDAA00CF9F08 /* HealthTrackerTests */,
 				1B0151CD1831BDA900CF9F08 /* Frameworks */,
@@ -125,6 +147,8 @@
 		1B0151CD1831BDA900CF9F08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE6BC45218431567000F4918 /* QuartzCore.framework */,
+				CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */,
 				CE9EA0DF1831D5A6004177BE /* CoreData.framework */,
 				1B0151CE1831BDA900CF9F08 /* Foundation.framework */,
 				1B0151D01831BDA900CF9F08 /* CoreGraphics.framework */,
@@ -191,6 +215,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CE6BC44718431412000F4918 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE6BC44D18431412000F4918 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,6 +237,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CE6BC44F18431419000F4918 /* PBXTargetDependency */,
 			);
 			name = HealthTracker;
 			productName = HealthTracker;
@@ -255,6 +288,12 @@
 			mainGroup = 1B0151C21831BDA900CF9F08;
 			productRefGroup = 1B0151CC1831BDA900CF9F08 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CE6BC44718431412000F4918 /* Products */;
+					ProjectRef = CE6BC44618431412000F4918 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1B0151CA1831BDA900CF9F08 /* HealthTracker */,
@@ -262,6 +301,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CE6BC44D18431412000F4918 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = CE6BC44C18431412000F4918 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B0151C91831BDA900CF9F08 /* Resources */ = {
@@ -317,6 +366,11 @@
 			isa = PBXTargetDependency;
 			target = 1B0151CA1831BDA900CF9F08 /* HealthTracker */;
 			targetProxy = 1B0151F41831BDAA00CF9F08 /* PBXContainerItemProxy */;
+		};
+		CE6BC44F18431419000F4918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = CE6BC44E18431419000F4918 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -423,7 +477,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/Users/user/Downloads/CorePlot_1.4/Source/framework/**";
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -436,7 +496,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/Users/user/Downloads/CorePlot_1.4/Source/framework/**";
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
