@@ -54,7 +54,7 @@
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
-        newMeal.mealType = [self convertStringToMealType:self.mealType];
+        newMeal.mealType = [self convertStringToNSNumber:self.mealType];
         
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
         
@@ -68,26 +68,21 @@
     }
 }
 
-- (SYHMealType) convertStringToMealType: (NSString *) mealTypeString
+- (NSNumber *) convertStringToNSNumber: (NSString *) mealTypeString
 {
-    SYHMealType *result = nil;
+    NSNumber *result = nil;
     if ([mealTypeString isEqualToString:@"Breakfast"]){
-        NSLog(@"Breakfast");
-        NSLog(@"%d", MealTypeBreakfast);
-        *result = MealTypeBreakfast;
+        result = @(1);
     } else if ([mealTypeString isEqualToString:@"Lunch"]){
-        NSLog(@"Lunch");
-        *result = MealTypeLunch;
+        result = @(2);
     } else if ([mealTypeString isEqualToString:@"Dinner"]){
-        NSLog(@"Dinner");
-        *result = MealTypeDinner;
+        result = @(3);
     } else if ([mealTypeString isEqualToString:@"Snack"]){
-        NSLog(@"Snack");
-        *result = MealTypeSnack;
+        result = @(4);
     } else {
         // TODO: raise an error
     }
-    return *result;
+    return result;
 }
 
 - (void)viewDidLoad

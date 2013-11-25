@@ -40,6 +40,23 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSString *)convertNSNumberToMealString: (NSNumber *) mealTypeNumber
+{
+    NSString *result = nil;
+    if ([mealTypeNumber isEqualToNumber:@(1)]){
+        result = @"Breakfast";
+    } else if ([mealTypeNumber isEqualToNumber:@(2)]){
+        result = @"Lunch";
+    } else if ([mealTypeNumber isEqualToNumber:@(3)]){
+        result = @"Dinner";
+    } else if ([mealTypeNumber isEqualToNumber:@(4)]){
+        result = @"Snack";
+    } else {
+        result = @"Error";
+    }
+    return result;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -81,7 +98,7 @@
     SYHMealObject *currentMeal = [self.allMeals objectAtIndex:indexPath.row];
     
     UILabel *typeLabel = (id)[cell viewWithTag:6];
-    typeLabel.text = [@"Meal Type:" stringByAppendingString: [currentMeal.mealType stringValue]];
+    typeLabel.text = [@"Meal Type: " stringByAppendingString: [self convertNSNumberToMealString:currentMeal.mealType]];
     
     UILabel *timeLabel = (id)[cell viewWithTag:7];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
