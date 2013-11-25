@@ -9,13 +9,13 @@
 #import "SYHNewMealController.h"
 #import "SYHMealObject.h"
 #import "SYHDataManager.h"
+#import "SYHMealType.h"
 
 @interface SYHNewMealController ()
 - (IBAction)dismissModal:(UIButton *) sender;
 - (IBAction)submitNewMeal:(UIButton *)sender;
 - (void) resignKeyboard:(id) sender;
 @property (strong) UITapGestureRecognizer *tapRecognizer;
-
 
 
 @end
@@ -54,7 +54,7 @@
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
-        newMeal.mealType = @(1);
+        newMeal.mealType = [self convertStringToMealType:self.mealType];
         
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
         
@@ -68,9 +68,34 @@
     }
 }
 
+- (SYHMealType) convertStringToMealType: (NSString *) mealTypeString
+{
+    SYHMealType *result = nil;
+    if ([mealTypeString isEqualToString:@"Breakfast"]){
+        NSLog(@"Breakfast");
+        NSLog(@"%d", MealTypeBreakfast);
+        *result = MealTypeBreakfast;
+    } else if ([mealTypeString isEqualToString:@"Lunch"]){
+        NSLog(@"Lunch");
+        *result = MealTypeLunch;
+    } else if ([mealTypeString isEqualToString:@"Dinner"]){
+        NSLog(@"Dinner");
+        *result = MealTypeDinner;
+    } else if ([mealTypeString isEqualToString:@"Snack"]){
+        NSLog(@"Snack");
+        *result = MealTypeSnack;
+    } else {
+        // TODO: raise an error
+    }
+    return *result;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set meal type
+    mealTypeLabel.text = [@"New " stringByAppendingString:self.mealType];
     
     // Date picker
     UIDatePicker *myDatePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 200, 320, 200)];

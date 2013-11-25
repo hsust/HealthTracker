@@ -16,7 +16,7 @@
     if(self = [self init]){
         _mealTime = [decoder decodeObjectForKey: @"mealTime"];
         _meals = [decoder decodeObjectForKey: @"meals"];
-        _mealType = [decoder decodeObjectForKey:@"state"];
+        _mealType = [decoder decodeObjectForKey:@"mealType"];
     }
     return self;
 }

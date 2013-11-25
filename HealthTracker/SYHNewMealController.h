@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYHMealType.h"
 
 @interface SYHNewMealController : UIViewController
 {
+    IBOutlet UILabel *mealTypeLabel;
     IBOutlet UITextField *timeField;
     IBOutlet UITextField *mealField;
 }
+@property (nonatomic) NSString * mealType;
 
 @end

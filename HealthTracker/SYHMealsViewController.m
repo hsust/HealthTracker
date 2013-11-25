@@ -7,6 +7,7 @@
 //
 
 #import "SYHMealsViewController.h"
+#import "SYHNewMealController.h"
 
 @interface SYHMealsViewController ()
 
@@ -24,10 +25,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"NewMeal"]){
+        SYHNewMealController *newMealController = (SYHNewMealController *) segue.destinationViewController;
+        UIButton *mealTypeButton = (UIButton *) sender;
+        newMealController.mealType = mealTypeButton.titleLabel.text;
+    }
+}
 
 - (IBAction)insertNewMeal:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"NewMeal" sender:self];
+    [self performSegueWithIdentifier:@"NewMeal" sender:sender];
 }
 
 - (IBAction)seePreviousMeals:(UIButton *)sender

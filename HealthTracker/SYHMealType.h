@@ -12,9 +12,9 @@
 
 typedef NS_ENUM(NSUInteger, SYHMealType) {
     MealTypeBreakfast = 0,
-    MealTypeLunch,
-    MealTypeDinner,
-    MealTypeSnack
+    MealTypeLunch = 1,
+    MealTypeDinner = 2,
+    MealTypeSnack = 3
 };
 
 @end

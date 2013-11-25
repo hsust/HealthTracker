@@ -80,17 +80,16 @@
     
     SYHMealObject *currentMeal = [self.allMeals objectAtIndex:indexPath.row];
     
+    UILabel *typeLabel = (id)[cell viewWithTag:6];
+    typeLabel.text = [@"Meal Type:" stringByAppendingString: [currentMeal.mealType stringValue]];
+    
     UILabel *timeLabel = (id)[cell viewWithTag:7];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
-    timeLabel.text = [dateFormatter stringFromDate:currentMeal.mealTime];
+    timeLabel.text = [@"Meal Time: " stringByAppendingString: [dateFormatter stringFromDate:currentMeal.mealTime]];
     
     UILabel *foodLabel = (id)[cell viewWithTag:8];
-    foodLabel.text = currentMeal.meals;
-    
-    UILabel *typeLabel = (id)[cell viewWithTag:9];
-    typeLabel.text = [currentMeal.mealType stringValue];
-    
+    foodLabel.text = [@"Food: " stringByAppendingString: currentMeal.meals];
     
     return cell;
 }

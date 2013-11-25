@@ -24,7 +24,7 @@
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
-		CE6BC41E1842F7D9000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC41D1842F7D9000F4918 /* Meals.m */; };
+		CE6BC4271842FD64000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC4261842FD64000F4918 /* Meals.m */; };
 		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 		CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */; };
 		CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */; };
@@ -67,8 +67,8 @@
 		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
 		CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsTableViewController.m; sourceTree = "<group>"; };
-		CE6BC41C1842F7D9000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
-		CE6BC41D1842F7D9000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
+		CE6BC4251842FD64000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
+		CE6BC4261842FD64000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
 		CE9EA0D61831C606004177BE /* SYHNewMealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHNewMealController.h; sourceTree = "<group>"; };
 		CE9EA0D71831C606004177BE /* SYHNewMealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHNewMealController.m; sourceTree = "<group>"; };
 		CE9EA0D91831C9F8004177BE /* SYHMealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealObject.h; sourceTree = "<group>"; };
@@ -137,9 +137,9 @@
 		1B0151D41831BDA900CF9F08 /* HealthTracker */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BC41C1842F7D9000F4918 /* Meals.h */,
-				CE6BC41D1842F7D9000F4918 /* Meals.m */,
 				CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */,
+				CE6BC4251842FD64000F4918 /* Meals.h */,
+				CE6BC4261842FD64000F4918 /* Meals.m */,
 				1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */,
 				1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */,
 				CE9EA0D91831C9F8004177BE /* SYHMealObject.h */,
@@ -297,7 +297,7 @@
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */,
 				CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */,
-				CE6BC41E1842F7D9000F4918 /* Meals.m in Sources */,
+				CE6BC4271842FD64000F4918 /* Meals.m in Sources */,
 				1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

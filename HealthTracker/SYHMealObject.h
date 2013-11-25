@@ -13,6 +13,6 @@
 
 @property (nonatomic,strong) NSDate *mealTime;
 @property (nonatomic,strong) NSString *meals;
-@property (nonatomic,assign) NSNumber *mealType;
+@property (nonatomic,assign) SYHMealType *mealType;
 
 @end
