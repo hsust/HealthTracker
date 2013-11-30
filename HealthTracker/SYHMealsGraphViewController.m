@@ -6,12 +6,34 @@
 //  Copyright (c) 2013 Stephanie Hsu. All rights reserved.
 //
 #import "SYHMealsGraphViewController.h"
+#import "SYHDataManager.h"
+#import "Meals.h"
 
 @interface SYHMealsGraphViewController ()
+@property (nonatomic,strong) SYHDataManager *myDataManager;
+@property (nonatomic,strong) NSArray *allMeals;
+@property (nonatomic,strong) NSArray *plotData;
 
 @end
 
 @implementation SYHMealsGraphViewController
+
+- (SYHDataManager *) myDataManager
+{
+    if (!_myDataManager) {
+        _myDataManager = [[SYHDataManager alloc] init];
+    }
+    return _myDataManager;
+}
+
+- (NSArray *) allMeals
+{
+    if (!_allMeals) {
+        _allMeals = [self.myDataManager allMeals];
+    }
+    return _allMeals;
+}
+
 
 - (IBAction)dismissModal:(UIBarButtonItem *) sender
 {
@@ -25,7 +47,9 @@
     [self setupAndShowGraph];
 }
 
-- (CGRect) maximumUsableFrame {
+// Generates the largest frame useable by accounting for NavigationBar and TabBar
+- (CGRect) maximumUsableFrame
+{
     static CGFloat const kToolBarHeight = 49;
     
     // Start with the screen size minus the status bar if present
@@ -47,6 +71,11 @@
 
 - (void)setupAndShowGraph
 {
+    NSDate *refDate = [NSDate date];
+    NSDate *today = [NSDate date];
+    NSDate *startDate = [[self.allMeals objectAtIndex:0] valueForKey:@"mealTime"];
+    NSTimeInterval oneDay = 24 * 60 * 60;
+    
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
     CGRect hostViewFrame = [self maximumUsableFrame];
     CPTGraphHostingView* hostView = [[CPTGraphHostingView alloc] initWithFrame: hostViewFrame];
@@ -57,46 +86,75 @@
     CPTGraph* graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     hostView.hostedGraph = graph;
     
-    // Get the (default) plotspace from the graph so we can set its x/y ranges
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    // Setup scatter plot space
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                                               fromDate:startDate
+                                                 toDate:today
+                                                options:0];
     
-    // Note that these CPTPlotRange are defined by START and LENGTH (not START and END) !!
-    [plotSpace setYRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( 0 ) length:CPTDecimalFromFloat( 16 )]];
-    [plotSpace setXRange: [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat( -4 ) length:CPTDecimalFromFloat( 8 )]];
+    NSTimeInterval xLow       = 0.0f;
     
-    // Create the plot (we do not define actual x/y values yet, these will be supplied by the datasource...)
-    CPTScatterPlot* plot = [[CPTScatterPlot alloc] initWithFrame:CGRectZero];
+    CPTPlotRange *xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xLow) length:CPTDecimalFromFloat(components.day * oneDay)];
+    plotSpace.xRange = xRange;
+    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-3.0) length:CPTDecimalFromFloat(6.0)];
     
-    // Let's keep it simple and let this class act as datasource (therefore we implemtn <CPTPlotDataSource>)
-    plot.dataSource = self;
+    // Axes
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+    CPTXYAxis *x          = axisSet.xAxis;
+    x.majorIntervalLength         = CPTDecimalFromFloat(oneDay * components.day / 5);
+    x.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0);
+    x.minorTicksPerInterval       = 0;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    CPTTimeFormatter *timeFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
+    timeFormatter.referenceDate = startDate;
+    x.labelFormatter            = timeFormatter;
     
-    // Finally, add the created plot to the default plot space of the CPTGraph object we created before
-    [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+    CPTXYAxis *y = axisSet.yAxis;
+    y.majorIntervalLength         = CPTDecimalFromFloat(1);
+    y.minorTicksPerInterval       = 0;
+    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(oneDay *5);
+    
+    // Create a plot that uses the data source method
+    CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
+    dataSourceLinePlot.identifier = @"Date Plot";
+    
+    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
+    lineStyle.lineWidth              = 3.f;
+    lineStyle.lineColor              = [CPTColor greenColor];
+    dataSourceLinePlot.dataLineStyle = lineStyle;
+    
+    dataSourceLinePlot.dataSource = self;
+    [graph addPlot:dataSourceLinePlot];
+    
+    // Add some data
+    NSMutableArray *newData = [NSMutableArray array];
+    NSUInteger i;
+    for ( i = 0; i < 5; i++ ) {
+        NSTimeInterval x = oneDay * i;
+        id y             = [NSDecimalNumber numberWithFloat:1.2 * rand() / (float)RAND_MAX + 1.2];
+        [newData addObject:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          [NSDecimalNumber numberWithFloat:x], [NSNumber numberWithInt:CPTScatterPlotFieldX],
+          y, [NSNumber numberWithInt:CPTScatterPlotFieldY],
+          nil]];
+    }
+    _plotData = newData;
 
 }
 
-// This method is here because this class also functions as datasource for our graph
-// Therefore this class implements the CPTPlotDataSource protocol
--(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plotnumberOfRecords {
-    return 9; // Our sample graph contains 9 'points'
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    return _plotData.count;
 }
 
-// This method is here because this class also functions as datasource for our graph
-// Therefore this class implements the CPTPlotDataSource protocol
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    // We need to provide an X or Y (this method will be called for each) value for every index
-    int x = index - 4;
+    NSDecimalNumber *num = [[_plotData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
     
-    // This method is actually called twice per point in the plot, one for the X and one for the Y value
-    if(fieldEnum == CPTScatterPlotFieldX)
-    {
-        // Return x value, which will, depending on index, be between -4 to 4
-        return [NSNumber numberWithInt: x];
-    } else {
-        // Return y value, for this example we'll be plotting y = x * x
-        return [NSNumber numberWithInt: x * x];
-    }
+    return num;
 }
 
 - (void)didReceiveMemoryWarning

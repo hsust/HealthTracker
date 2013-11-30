@@ -48,14 +48,13 @@
     
     else {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"hh:mm a, MM/dd/YY"];
+        [formatter setDateFormat:@"hh:mm aa, MM/dd/yy"];
         NSDate *date = [formatter dateFromString:timeField.text];
-        
+
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
         newMeal.mealType = [self convertStringToNSNumber:self.mealType];
-        
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
         
         if ([myMealDataManager addMealWithData:newMeal]) {
@@ -132,13 +131,13 @@
 
 - (void) didTapAnywhere : (UITapGestureRecognizer *) recognizer
 {
-    [timeField resignFirstResponder];
-    [mealField resignFirstResponder];
+    [self resignKeyboard:self];
 }
 
 - (void) resignKeyboard:(id)sender
 {
-    
+    [timeField resignFirstResponder];
+    [mealField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

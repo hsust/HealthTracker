@@ -41,8 +41,28 @@
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Meals" inManagedObjectContext:context];
     fetchRequest.entity = entity;
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"mealTime" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    NSError *error;
+    NSArray *fetchedResults = [context executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedResults;
+}
+
+- (NSArray *) allMealsOfType: (SYHMealType) mealType
+{
+    NSManagedObjectContext *context = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Meals" inManagedObjectContext:context];
+    fetchRequest.entity = entity;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mealType == %@", mealType];
+    fetchRequest.predicate = predicate;
+    
     NSError *error;
     NSArray *fetchedResults = [context executeFetchRequest:fetchRequest error:&error];
     
