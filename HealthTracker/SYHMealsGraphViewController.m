@@ -22,18 +22,41 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self setupAndShowGraph];
+}
+
+- (CGRect) maximumUsableFrame {
+    static CGFloat const kToolBarHeight = 49;
     
+    // Start with the screen size minus the status bar if present
+    CGRect maxFrame = [UIScreen mainScreen].applicationFrame;
+    
+    // If the orientation is landscape left or landscape right then swap the width and height
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        CGFloat temp = maxFrame.size.height;
+        maxFrame.size.height = maxFrame.size.width;
+        maxFrame.size.width = temp;
+    }
+    
+    // Take into account if there is a toolbar present and visible
+    if (self.tabBarController) {
+        if (!self.tabBarController.view.hidden) maxFrame.size.height -= kToolBarHeight;
+    }
+    return maxFrame;
+}
+
+- (void)setupAndShowGraph
+{
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
-    NSLog(@"%@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame]));
-    CPTGraphHostingView* hostView = [[CPTGraphHostingView alloc] initWithFrame: [[UIScreen mainScreen] applicationFrame]];
+    CGRect hostViewFrame = [self maximumUsableFrame];
+    CPTGraphHostingView* hostView = [[CPTGraphHostingView alloc] initWithFrame: hostViewFrame];
     hostView.allowPinchScaling = YES;
     [self.view addSubview: hostView];
     
     // Create a CPTGraph object and add to hostView
-    NSLog(@"%@", NSStringFromCGRect(hostView.bounds));
     CPTGraph* graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     hostView.hostedGraph = graph;
-
+    
     // Get the (default) plotspace from the graph so we can set its x/y ranges
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     
@@ -49,6 +72,7 @@
     
     // Finally, add the created plot to the default plot space of the CPTGraph object we created before
     [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+
 }
 
 // This method is here because this class also functions as datasource for our graph
