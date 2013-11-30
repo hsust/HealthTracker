@@ -28,6 +28,7 @@
 		CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45218431567000F4918 /* QuartzCore.framework */; };
 		CE6BC4F8184318D0000F4918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC4F7184318D0000F4918 /* Accelerate.framework */; };
 		CE6BCA1C18431964000F4918 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BCA1B18431964000F4918 /* libCorePlot-CocoaTouch.a */; };
+		CE79C803184962D10040B670 /* SYHMealsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE79C802184962D10040B670 /* SYHMealsGraphViewController.m */; };
 		CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0D71831C606004177BE /* SYHNewMealController.m */; };
 		CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */; };
 		CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */; };
@@ -154,6 +155,8 @@
 		CE6BCA1918431964000F4918 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		CE6BCA1A18431964000F4918 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		CE6BCA1B18431964000F4918 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		CE79C801184962D10040B670 /* SYHMealsGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsGraphViewController.h; sourceTree = "<group>"; };
+		CE79C802184962D10040B670 /* SYHMealsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsGraphViewController.m; sourceTree = "<group>"; };
 		CE9EA0D61831C606004177BE /* SYHNewMealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHNewMealController.h; sourceTree = "<group>"; };
 		CE9EA0D71831C606004177BE /* SYHNewMealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHNewMealController.m; sourceTree = "<group>"; };
 		CE9EA0D91831C9F8004177BE /* SYHMealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealObject.h; sourceTree = "<group>"; };
@@ -242,10 +245,12 @@
 				CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */,
 				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
 				1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */,
-				CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */,
-				CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */,
 				CE9EA0D61831C606004177BE /* SYHNewMealController.h */,
 				CE9EA0D71831C606004177BE /* SYHNewMealController.m */,
+				CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */,
+				CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */,
+				CE79C801184962D10040B670 /* SYHMealsGraphViewController.h */,
+				CE79C802184962D10040B670 /* SYHMealsGraphViewController.m */,
 				1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */,
 				1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
@@ -468,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE79C803184962D10040B670 /* SYHMealsGraphViewController.m in Sources */,
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
 				1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */,
 				CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */,
@@ -614,7 +620,7 @@
 					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
 					/Users/user/CIS195/HealthTracker,
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -639,7 +645,7 @@
 					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
 					/Users/user/CIS195/HealthTracker,
 				);
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
