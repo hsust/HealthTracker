@@ -8,6 +8,7 @@
 
 #import "SYHMealsTableViewController.h"
 #import "Meals.h"
+#import "SYHMealType.h"
 
 @interface SYHMealsTableViewController ()
 
@@ -40,16 +41,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *)convertNSNumberToMealString: (NSNumber *) mealTypeNumber
+- (NSString *)convertMealNumberToMealString: (NSNumber *) mealTypeNumber
 {
     NSString *result = nil;
-    if ([mealTypeNumber isEqualToNumber:@(1)]){
+    if ([mealTypeNumber isEqualToNumber:@(0)]){
         result = @"Breakfast";
-    } else if ([mealTypeNumber isEqualToNumber:@(2)]){
+    } else if ([mealTypeNumber isEqualToNumber:@(1)]){
         result = @"Lunch";
-    } else if ([mealTypeNumber isEqualToNumber:@(3)]){
+    } else if ([mealTypeNumber isEqualToNumber:@(2)]){
         result = @"Dinner";
-    } else if ([mealTypeNumber isEqualToNumber:@(4)]){
+    } else if ([mealTypeNumber isEqualToNumber:@(3)]){
         result = @"Snack";
     } else {
         result = @"Error";
@@ -96,9 +97,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     SYHMealObject *currentMeal = [self.allMeals objectAtIndex:indexPath.row];
-    
     UILabel *typeLabel = (id)[cell viewWithTag:6];
-    typeLabel.text = [@"Meal Type: " stringByAppendingString: [self convertNSNumberToMealString:currentMeal.mealType]];
+    typeLabel.text = [@"Meal Type: " stringByAppendingString: [self convertMealNumberToMealString:currentMeal.mealType]];
     
     UILabel *timeLabel = (id)[cell viewWithTag:7];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

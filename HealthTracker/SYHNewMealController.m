@@ -54,9 +54,9 @@
         SYHMealObject *newMeal = [[SYHMealObject alloc] init];
         newMeal.mealTime = date;
         newMeal.meals = mealField.text;
-        newMeal.mealType = [self convertStringToNSNumber:self.mealType];
+        newMeal.mealType = @(_mealType);
         SYHDataManager *myMealDataManager = [[SYHDataManager alloc] init];
-        
+        NSLog(@"%@", newMeal);
         if ([myMealDataManager addMealWithData:newMeal]) {
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
@@ -89,7 +89,19 @@
     [super viewDidLoad];
     
     // Set meal type
-    mealTypeLabel.text = [@"New " stringByAppendingString:self.mealType];
+//    NSLog(@"%@", self.mealType);
+//    mealTypeLabel.text = [@"New " stringByAppendingString:self.mealType];
+    if (_mealType == MealTypeBreakfast){
+        mealTypeLabel.text = @"Breakfast";
+    } else if (self.mealType == MealTypeLunch){
+        mealTypeLabel.text = @"Lunch";
+    } else if (_mealType == MealTypeLunch){
+        mealTypeLabel.text = @"Dinner";
+    } else if (_mealType == MealTypeLunch){
+        mealTypeLabel.text = @"Snack";
+    } else {
+        NSLog(@"Error with matching meal type.");
+    }
     
     // Date picker
     UIDatePicker *myDatePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 200, 320, 200)];

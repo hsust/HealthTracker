@@ -15,6 +15,7 @@
     IBOutlet UITextField *timeField;
     IBOutlet UITextField *mealField;
 }
-@property (nonatomic) NSString * mealType;
+//@property (nonatomic) NSString * mealType;
+@property (nonatomic) SYHMealType mealType;
 
 @end

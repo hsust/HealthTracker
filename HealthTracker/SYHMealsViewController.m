@@ -8,6 +8,7 @@
 
 #import "SYHMealsViewController.h"
 #import "SYHNewMealController.h"
+#import "SYHMealType.h"
 
 @interface SYHMealsViewController ()
 
@@ -30,7 +31,18 @@
     if([segue.identifier isEqualToString:@"NewMeal"]){
         SYHNewMealController *newMealController = (SYHNewMealController *) segue.destinationViewController;
         UIButton *mealTypeButton = (UIButton *) sender;
-        newMealController.mealType = mealTypeButton.titleLabel.text;
+        
+        if (mealTypeButton.tag == 0){
+            newMealController.mealType = MealTypeBreakfast;
+        } else if (mealTypeButton.tag == 1){
+            newMealController.mealType = MealTypeLunch;
+        } else if (mealTypeButton.tag == 2){
+            newMealController.mealType = MealTypeDinner;
+        } else if (mealTypeButton.tag == 3){
+            newMealController.mealType = MealTypeSnack;
+        } else {
+            NSLog(@"Error with matching meal type.");
+        }
     }
 }
 
