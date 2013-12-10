@@ -103,7 +103,7 @@
     NSTimeInterval oneHour = 60 * 60;
     
     // Graph Theme
-    CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
+    
     
     // Graph Title Style
     CPTMutableTextStyle *graphTitleStyle = [CPTMutableTextStyle textStyle];
@@ -143,18 +143,18 @@
     // Create a CPTGraph object and add to hostView
     CPTGraph* graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     hostView.hostedGraph = graph;
+    CPTTheme *theme = [CPTTheme themeNamed:kCPTSlateTheme];
     [graph applyTheme:theme];
     
-    //Setup title
-//    NSString *title = @"Food Consumption";
-//    graph.title = title;
-//    graph.titleTextStyle = graphTitleStyle;
-//    graph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
-//    graph.titleDisplacement = CGPointMake(0.0f, 10.0f);
-
-    // Axis offsets
-    [graph.plotAreaFrame setPaddingLeft:30.0f];
-    [graph.plotAreaFrame setPaddingBottom:20.0f];
+    // Graph frame and borders
+    graph.plotAreaFrame.paddingTop    = 0;
+    graph.plotAreaFrame.paddingBottom = 20;
+    graph.plotAreaFrame.paddingLeft   = 40.0;
+    graph.plotAreaFrame.paddingRight  = 0.0;
+    graph.plotAreaFrame.cornerRadius  = 0.0;
+    graph.plotAreaFrame.borderWidth = 0;
+    graph.plotAreaFrame.borderLineStyle = nil;
+    graph.plotAreaFrame.masksToBorder = NO;
     
     // Setup scatter plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
@@ -166,13 +166,13 @@
     
     // Axes
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
-    axisSet.xAxis.axisConstraints   = [CPTConstraints constraintWithLowerOffset:30];
-    axisSet.yAxis.axisConstraints   = [CPTConstraints constraintWithLowerOffset:30];
+    axisSet.xAxis.axisConstraints   = [CPTConstraints constraintWithLowerOffset:0];
+    axisSet.yAxis.axisConstraints   = [CPTConstraints constraintWithLowerOffset:0];
     
     CPTXYAxis *x                  = axisSet.xAxis;
     x.title                     = @"Date";
     x.titleTextStyle            = axisTitleStyle;
-    x.titleOffset               = 30.0f;
+    x.titleOffset               = 20.0f;
     x.majorIntervalLength       = CPTDecimalFromFloat(oneDay);
     x.minorTicksPerInterval     = 0;
     x.labelTextStyle            = axisTitleStyle;
