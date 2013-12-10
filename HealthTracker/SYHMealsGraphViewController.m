@@ -81,14 +81,24 @@
     if (self.tabBarController) {
         if (!self.tabBarController.view.hidden) maxFrame.size.height -= kToolBarHeight;
     }
-    NSLog(@"%@", NSStringFromCGRect(maxFrame));
     return maxFrame;
 }
 
 - (void)setupAndShowGraph
 {
+    int numOfMeals = [[self allMeals] count];
     NSDate *today = [NSDate date];
-    NSDate *startDate = [[self.allMeals objectAtIndex:0] valueForKey:@"mealTime"];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components: NSYearCalendarUnit|
+                                    NSMonthCalendarUnit|
+                                    NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                                               fromDate:today];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    NSDate *beginningOfToday = [calendar dateFromComponents:components];
+    components.day -= 7;
+    NSDate *aWeekAgo = [calendar dateFromComponents:components];
     NSTimeInterval oneDay = 24 * 60 * 60;
     NSTimeInterval oneHour = 60 * 60;
     
@@ -116,12 +126,12 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd"];
     CPTTimeFormatter *xAxisFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
-    xAxisFormatter.referenceDate = startDate;
+    xAxisFormatter.referenceDate = aWeekAgo;
     
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"h a"];
     CPTTimeFormatter *yAxisFormatter    = [[CPTTimeFormatter alloc] initWithDateFormatter:timeFormatter];
-    yAxisFormatter.referenceDate        = [timeFormatter dateFromString:@"12:00 am"];
+    yAxisFormatter.referenceDate        = beginningOfToday;
     
     
     // We need a hostview, you can create one in IB (and create an outlet) or just do this:
@@ -149,16 +159,10 @@
     // Setup scatter plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = YES;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-                                               fromDate:startDate
-                                                 toDate:today
-                                                options:0];
-    
     plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
-                                                    length:CPTDecimalFromFloat(7 * oneDay)];
+                                                    length:CPTDecimalFromFloat(8 * oneDay)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
-                                                    length:CPTDecimalFromFloat(oneDay)];
+                                                    length:CPTDecimalFromFloat(-oneDay)];
     
     // Axes
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
@@ -189,17 +193,14 @@
     CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
     dataSourceLinePlot.identifier = @"Date Plot";
     
-    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
-    lineStyle.lineWidth              = 2.0f;
-    lineStyle.lineColor              = [CPTColor greenColor];
-    dataSourceLinePlot.dataLineStyle = lineStyle;
+    dataSourceLinePlot.dataLineStyle = nil;
     
     dataSourceLinePlot.dataSource = self;
     [graph addPlot:dataSourceLinePlot];
     
     CPTPlotSymbol *whiteCirclePlotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
     whiteCirclePlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    whiteCirclePlotSymbol.size = CGSizeMake(5.0, 5.0);
+    whiteCirclePlotSymbol.size = CGSizeMake(7.0, 7.0);
     dataSourceLinePlot.plotSymbol = whiteCirclePlotSymbol;
     
     // add plot to graph
@@ -207,32 +208,56 @@
     
     // Add some data
     NSMutableArray *graphData = [NSMutableArray array];
-    NSUInteger i;
-    NSString *timeString = [timeFormatter stringFromDate:[[_allMeals objectAtIndex:0] valueForKey:@"mealTime"]];
-    NSDate *testDate = [timeFormatter dateFromString:timeString];
-    NSLog(@"test date: %@, %g", testDate, [testDate timeIntervalSince1970]);
-    for ( i = 0; i < 5; i++ ) {
-        timeString = [timeFormatter stringFromDate:[[_allMeals objectAtIndex:0] valueForKey:@"mealTime"]];
-        id y = [NSDecimalNumber numberWithDouble:[[timeFormatter dateFromString:timeString] timeIntervalSince1970]];
-        NSTimeInterval x = oneDay * i;
+    
+    if (numOfMeals == 0){
+        return;
+    }
+    
+    NSDate *currDate;
+    for ( int i = numOfMeals-1; i >= 0; i--) {
+        currDate = [[_allMeals objectAtIndex:i] valueForKey:@"mealTime"];
+        id x = [NSDecimalNumber numberWithDouble:[[self convertToBeginningOfDay:currDate] timeIntervalSinceDate: aWeekAgo]];
+        id y = [NSDecimalNumber numberWithDouble:[[self convertToCurrentDate:currDate] timeIntervalSinceDate: beginningOfToday]];
         [graphData addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSDecimalNumber numberWithFloat:x],
+                              x,
                               [NSNumber numberWithInt:CPTScatterPlotFieldX],
                               y,
                               [NSNumber numberWithInt:CPTScatterPlotFieldY],
                               nil]];
-        
-//        NSTimeInterval x = oneDay * i;
-//        id y             = [NSDecimalNumber numberWithFloat:1.2 * rand() / (float)RAND_MAX + 1.2];
-//        [graphData addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-//                            [NSDecimalNumber numberWithFloat:x],
-//                            [NSNumber numberWithInt:CPTScatterPlotFieldX],
-//                            y,
-//                            [NSNumber numberWithInt:CPTScatterPlotFieldY],
-//                            nil]];
     }
+//    NSLog(@"%@", graphData);
     _plotData = graphData;
     
+}
+
+-(NSDate *)convertToCurrentDate:(NSDate *)date
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *resultComponents = [calendar components: NSYearCalendarUnit|
+                                        NSMonthCalendarUnit|
+                                        NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                                                   fromDate:date];
+    NSDateComponents *todayComponents = [calendar components: NSYearCalendarUnit|
+                                        NSMonthCalendarUnit|
+                                        NSDayCalendarUnit
+                                                   fromDate:[NSDate date]];
+    resultComponents.year = todayComponents.year;
+    resultComponents.month = todayComponents.month;
+    resultComponents.day = todayComponents.day-1;
+    return [calendar dateFromComponents:resultComponents];
+}
+
+-(NSDate *)convertToBeginningOfDay:(NSDate *)date
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *resultComponents = [calendar components: NSYearCalendarUnit|
+                                          NSMonthCalendarUnit|
+                                          NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                                                     fromDate:date];
+    resultComponents.hour = 0;
+    resultComponents.minute = 0;
+    resultComponents.hour = 0;
+    return [calendar dateFromComponents:resultComponents];
 }
 
 #pragma mark - Rotation
@@ -250,9 +275,6 @@
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
     NSDecimalNumber *num = [[_plotData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
-    
-    NSString *string = [NSString stringWithFormat:@"%g", [num doubleValue]];
-    NSLog(@"Number is %@",string);
     return num;
 }
 
