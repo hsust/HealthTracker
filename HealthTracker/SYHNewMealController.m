@@ -67,23 +67,6 @@
     }
 }
 
-- (NSNumber *) convertStringToNSNumber: (NSString *) mealTypeString
-{
-    NSNumber *result = nil;
-    if ([mealTypeString isEqualToString:@"Breakfast"]){
-        result = @(1);
-    } else if ([mealTypeString isEqualToString:@"Lunch"]){
-        result = @(2);
-    } else if ([mealTypeString isEqualToString:@"Dinner"]){
-        result = @(3);
-    } else if ([mealTypeString isEqualToString:@"Snack"]){
-        result = @(4);
-    } else {
-        // TODO: raise an error
-    }
-    return result;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

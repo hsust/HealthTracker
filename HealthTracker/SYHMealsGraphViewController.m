@@ -7,12 +7,18 @@
 //
 #import "SYHMealsGraphViewController.h"
 #import "SYHDataManager.h"
+#import "SYHMealType.h"
 #import "Meals.h"
 
 @interface SYHMealsGraphViewController ()
 @property (nonatomic,strong) SYHDataManager *myDataManager;
 @property (nonatomic,strong) NSArray *allMeals;
 @property (nonatomic,strong) NSArray *plotData;
+@property (nonatomic,strong) NSArray *breakfastData;
+@property (nonatomic,strong) NSArray *lunchData;
+@property (nonatomic,strong) NSArray *dinnerData;
+@property (nonatomic,strong) NSArray *snackData;
+@property (nonatomic,strong) NSMutableDictionary *mealsPlotData;
 
 @end
 
@@ -32,6 +38,18 @@
         _allMeals = [self.myDataManager allMeals];
     }
     return _allMeals;
+}
+
+- (NSMutableDictionary *) mealsPlotData
+{
+    if (!_mealsPlotData){
+        _mealsPlotData = [[NSMutableDictionary alloc] init];
+        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"BreakfastData"];
+        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"LunchData"];
+        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"DinnerData"];
+        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"SnackData"];
+    }
+    return _mealsPlotData;
 }
 
 
@@ -191,10 +209,8 @@
     
     // Create a plot that uses the data source method
     CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
-    dataSourceLinePlot.identifier = @"Date Plot";
-    
+    dataSourceLinePlot.identifier = @"Meals Plot";
     dataSourceLinePlot.dataLineStyle = nil;
-    
     dataSourceLinePlot.dataSource = self;
     [graph addPlot:dataSourceLinePlot];
     
@@ -203,21 +219,92 @@
     whiteCirclePlotSymbol.size = CGSizeMake(7.0, 7.0);
     dataSourceLinePlot.plotSymbol = whiteCirclePlotSymbol;
     
-    // add plot to graph
-    [graph addPlot:dataSourceLinePlot];
+    
+    // Set up the four graphs
+    CPTScatterPlot *breakfastPlot = [[CPTScatterPlot alloc] init];
+    breakfastPlot.identifier = @"Breakfast Plot";
+    CPTScatterPlot *lunchPlot = [[CPTScatterPlot alloc] init];
+    lunchPlot.identifier = @"Lunch Plot";
+    CPTScatterPlot *dinnerPlot = [[CPTScatterPlot alloc] init];
+    dinnerPlot.identifier = @"Dinner Plot";
+    CPTScatterPlot *snackPlot = [[CPTScatterPlot alloc] init];
+    snackPlot.identifier = @"Snack Plot";
+
+    // Set up line style
+    CPTMutableLineStyle *lineStyle = nil;
+    
+    // Add plots to graph
+    NSArray *plots = [NSArray arrayWithObjects:breakfastPlot, lunchPlot, dinnerPlot, snackPlot, nil];
+    for (CPTScatterPlot *plot in plots) {
+        plot.dataSource = self;
+        plot.delegate = self;
+        plot.dataLineStyle = lineStyle;
+        plot.plotSymbol = whiteCirclePlotSymbol;
+        [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+    }
     
     // Add some data
     NSMutableArray *graphData = [NSMutableArray array];
+    NSMutableArray *breakfast = [NSMutableArray array];
+    NSMutableArray *lunch = [NSMutableArray array];
+    NSMutableArray *dinner = [NSMutableArray array];
+    NSMutableArray *snack = [NSMutableArray array];
     
     if (numOfMeals == 0){
         return;
     }
     
     NSDate *currDate;
+    SYHMealObject *currMeal;
+    NSString *mealKey;
     for ( int i = numOfMeals-1; i >= 0; i--) {
-        currDate = [[_allMeals objectAtIndex:i] valueForKey:@"mealTime"];
+        currMeal = [_allMeals objectAtIndex:i];
+        currDate = currMeal.mealTime;
         id x = [NSDecimalNumber numberWithDouble:[[self convertToBeginningOfDay:currDate] timeIntervalSinceDate: aWeekAgo]];
         id y = [NSDecimalNumber numberWithDouble:[[self convertToCurrentDate:currDate] timeIntervalSinceDate: beginningOfToday]];
+        if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeBreakfast]]){
+            mealKey = @"BreakfastData";
+            [breakfast addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     x,
+                                     [NSNumber numberWithInt:CPTScatterPlotFieldX],
+                                     y,
+                                     [NSNumber numberWithInt:CPTScatterPlotFieldY],
+                                     nil]];
+            NSLog(@"here %@", breakfast);
+        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeLunch]]){
+            mealKey = @"LunchData";
+            [lunch addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           x,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldX],
+                                           y,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldY],
+                                           nil]];
+        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeDinner]]){
+            mealKey = @"DinnerData";
+            [dinner addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           x,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldX],
+                                           y,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldY],
+                                           nil]];
+        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeSnack]]){
+            mealKey = @"SnackData";
+            [snack addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           x,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldX],
+                                           y,
+                                           [NSNumber numberWithInt:CPTScatterPlotFieldY],
+                                           nil]];
+        } else {
+        }
+        
+        [[self.mealsPlotData objectForKey:mealKey] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                         x,
+                                                         [NSNumber numberWithInt:CPTScatterPlotFieldX],
+                                                         y,
+                                                         [NSNumber numberWithInt:CPTScatterPlotFieldY],
+                                                         nil]];
+        
         [graphData addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                               x,
                               [NSNumber numberWithInt:CPTScatterPlotFieldX],
@@ -225,8 +312,11 @@
                               [NSNumber numberWithInt:CPTScatterPlotFieldY],
                               nil]];
     }
-//    NSLog(@"%@", graphData);
     _plotData = graphData;
+    _breakfastData = breakfast;
+    _lunchData = lunch;
+    _dinnerData = dinner;
+    _snackData = snack;
     
 }
 
@@ -268,13 +358,37 @@
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
+    if ([plot.identifier isEqual:@"Breakfast Plot"]) {
+        return [self.breakfastData count];
+    } else if ([plot.identifier isEqual:@"Lunch Plot"]) {
+        return [self.lunchData count];
+    } else if ([plot.identifier isEqual:@"Dinner Plot"]) {
+        return [self.dinnerData count];
+    } else if ([plot.identifier isEqual:@"Snack Plot"]) {
+        return [self.snackData count];
+    }
     return _plotData.count;
 }
 
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    NSDecimalNumber *num = [[_plotData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    NSString *mealKey;
+    NSDecimalNumber *num;
+    if ([plot.identifier isEqual:@"Breakfast Plot"]) {
+        mealKey = @"BreakfastData";
+        num = [[self.breakfastData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    } else if ([plot.identifier isEqual:@"Lunch Plot"]) {
+        mealKey = @"LunchData";
+        num =  [[self.lunchData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    } else if ([plot.identifier isEqual:@"Dinner Plot"]) {
+        mealKey = @"DinnerData";
+        num =  [[self.dinnerData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    } else if ([plot.identifier isEqual:@"Snack Plot"]) {
+        mealKey = @"SnackData";
+        num = [[self.snackData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    }
+
     return num;
 }
 
