@@ -10,5 +10,8 @@
 #import "CorePlot-CocoaTouch.h"
 
 @interface SYHMealsGraphViewController : UIViewController <CPTPlotDataSource>
+@property (nonatomic, strong) CPTGraphHostingView *hostView;
+
 - (IBAction)dismissModal:(UIBarButtonItem *) sender;
+
 @end
