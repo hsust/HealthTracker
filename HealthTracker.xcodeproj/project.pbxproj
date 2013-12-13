@@ -15,7 +15,6 @@
 		1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */; };
 		1B0151E21831BDA900CF9F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E01831BDA900CF9F08 /* Main.storyboard */; };
 		1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */; };
-		1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */; };
 		1B0151EA1831BDAA00CF9F08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E91831BDAA00CF9F08 /* Images.xcassets */; };
 		1B0151F11831BDAA00CF9F08 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151F01831BDAA00CF9F08 /* XCTest.framework */; };
 		1B0151F21831BDAA00CF9F08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151CE1831BDA900CF9F08 /* Foundation.framework */; };
@@ -24,6 +23,8 @@
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
+		CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */; };
+		CE4F1132185BA8EE00E08D01 /* SYHSleepManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1131185BA8EE00E08D01 /* SYHSleepManager.m */; };
 		CE6BC4271842FD64000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC4261842FD64000F4918 /* Meals.m */; };
 		CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45218431567000F4918 /* QuartzCore.framework */; };
 		CE6BC4F8184318D0000F4918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC4F7184318D0000F4918 /* Accelerate.framework */; };
@@ -59,8 +60,6 @@
 		1B0151E11831BDA900CF9F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHMealsViewController.h; sourceTree = "<group>"; };
 		1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHMealsViewController.m; sourceTree = "<group>"; };
-		1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHSecondViewController.h; sourceTree = "<group>"; };
-		1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHSecondViewController.m; sourceTree = "<group>"; };
 		1B0151E91831BDAA00CF9F08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B0151EF1831BDAA00CF9F08 /* HealthTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B0151F01831BDAA00CF9F08 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -71,6 +70,10 @@
 		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
 		CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsTableViewController.m; sourceTree = "<group>"; };
+		CE4F112D185BA75E00E08D01 /* SYHSleepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepViewController.h; sourceTree = "<group>"; };
+		CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepViewController.m; sourceTree = "<group>"; };
+		CE4F1130185BA8EE00E08D01 /* SYHSleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepManager.h; sourceTree = "<group>"; };
+		CE4F1131185BA8EE00E08D01 /* SYHSleepManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepManager.m; sourceTree = "<group>"; };
 		CE6BC4251842FD64000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
 		CE6BC4261842FD64000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
 		CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Downloads/CorePlot_1.4/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
@@ -251,8 +254,10 @@
 				CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */,
 				CE79C801184962D10040B670 /* SYHMealsGraphViewController.h */,
 				CE79C802184962D10040B670 /* SYHMealsGraphViewController.m */,
-				1B0151E61831BDA900CF9F08 /* SYHSecondViewController.h */,
-				1B0151E71831BDA900CF9F08 /* SYHSecondViewController.m */,
+				CE4F1130185BA8EE00E08D01 /* SYHSleepManager.h */,
+				CE4F1131185BA8EE00E08D01 /* SYHSleepManager.m */,
+				CE4F112D185BA75E00E08D01 /* SYHSleepViewController.h */,
+				CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
 				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
 				1B0151D51831BDA900CF9F08 /* Supporting Files */,
@@ -473,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4F1132185BA8EE00E08D01 /* SYHSleepManager.m in Sources */,
 				CE79C803184962D10040B670 /* SYHMealsGraphViewController.m in Sources */,
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
 				1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */,
@@ -480,10 +486,10 @@
 				CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */,
 				CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
+				CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */,
 				CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */,
 				CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */,
 				CE6BC4271842FD64000F4918 /* Meals.m in Sources */,
-				1B0151E81831BDA900CF9F08 /* SYHSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
