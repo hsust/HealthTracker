@@ -16,7 +16,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *sleepButton;
 
 - (IBAction)changeAndSaveSleepStatus:(UIButton *) sender;
-- (IBAction)seePreviousSleep:(UIButton *) sender;
 @end
 
 @implementation SYHSleepViewController
@@ -43,10 +42,6 @@
     [self changeSleepText:sender];
 }
 
-- (IBAction)seePreviousSleep:(UIButton *)sender
-{
-}
-
 
 - (void)changeSleepText:(UIButton *) sender
 {
@@ -55,6 +50,10 @@
     } else {
         [_sleepButton setTitle:@"Go to sleep" forState:UIControlStateNormal];
     }
+}
+
+- (void)saveNewSleep
+{
 }
 
 - (void)didReceiveMemoryWarning

@@ -102,7 +102,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mip-Ns-Wid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="561" y="-1114"/>
+            <point key="canvasLocation" x="561" y="-898"/>
         </scene>
         <!--Navigation Controller - Table-->
         <scene sceneID="VH9-em-vmt">
@@ -118,9 +118,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuB-AG-pfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="-1518"/>
+            <point key="canvasLocation" x="1063" y="-1582"/>
         </scene>
-        <!--Meals Table View Controller - All Meals-->
+        <!--Meals Table View Controller - Previous Meals-->
         <scene sceneID="zNN-6E-7qM">
             <objects>
                 <tableViewController id="bqr-0t-daV" customClass="SYHMealsTableViewController" sceneMemberID="viewController">
@@ -164,7 +164,7 @@
                             <outlet property="delegate" destination="bqr-0t-daV" id="uBI-9u-D0a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="All Meals" id="Xdj-5W-PUN">
+                    <navigationItem key="navigationItem" title="Previous Meals" id="Xdj-5W-PUN">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="lBb-ru-VxU">
                             <connections>
                                 <action selector="dismissModal:" destination="bqr-0t-daV" id="17c-sZ-FuA"/>
@@ -174,13 +174,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBd-bZ-1sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="-1518"/>
+            <point key="canvasLocation" x="1549" y="-1582"/>
         </scene>
         <!--Navigation Controller - Graph View-->
         <scene sceneID="xWF-Wp-BRA">
             <objects>
                 <navigationController title="Graph View" definesPresentationContext="YES" id="hRp-9r-czl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Graph" image="71BA6037-23EA-4896-8D7D-AFB760B78929" id="ODu-eN-VTk"/>
+                    <tabBarItem key="tabBarItem" title="Graph" image="288951C6-6EDD-4E65-B451-F8B32EA02EE2" id="ODu-eN-VTk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ff2-IK-GR4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -190,9 +190,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPV-QI-MV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="-834"/>
+            <point key="canvasLocation" x="1063" y="-898"/>
         </scene>
-        <!--Meals Graph View Controller - Meals Graph-->
+        <!--Meals Graph View Controller - Previous Meals-->
         <scene sceneID="wyC-41-HUD">
             <objects>
                 <viewController id="OBg-Dh-41B" customClass="SYHMealsGraphViewController" sceneMemberID="viewController">
@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Meals Graph" id="Ul6-k2-Wkv">
+                    <navigationItem key="navigationItem" title="Previous Meals" id="Ul6-k2-Wkv">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="aQm-pN-PVB">
                             <connections>
                                 <action selector="dismissModal:" destination="OBg-Dh-41B" id="5OD-hW-Eg6"/>
@@ -215,7 +215,91 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jll-29-iVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="-834"/>
+            <point key="canvasLocation" x="1549" y="-898"/>
+        </scene>
+        <!--Sleep Table View Controller - Previous Sleep Times-->
+        <scene sceneID="SnB-hP-pEk">
+            <objects>
+                <tableViewController id="RF6-53-MQO" customClass="SYHSleepTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Nm-fe-HhC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="129" id="4aR-5X-6f6">
+                                <rect key="frame" x="0.0" y="86" width="320" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aR-5X-6f6" id="PSM-on-JeV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Previous Sleep Times" id="zOW-kH-3ne">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="W7Q-QC-P74">
+                            <connections>
+                                <action selector="dismissModal:" destination="RF6-53-MQO" id="d01-a9-vOF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOb-CQ-Taq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="-16"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="5WA-Ir-OGs">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="M8C-cx-Zzk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aaF-aU-ZHM"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="51c-MD-jOl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RF6-53-MQO" kind="relationship" relationship="rootViewController" id="TTf-D2-jZ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t73-Ko-awA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="-16"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="u9h-Bv-Fzq">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="DNG-vZ-HgY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9Ac-67-OgS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZIc-Lb-7Sq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MYO-v6-Y2M" kind="relationship" relationship="rootViewController" id="X97-CV-3jk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xas-Sg-rSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="676"/>
+        </scene>
+        <!--View Controller - Previous Sleep Times-->
+        <scene sceneID="t3I-14-a8L">
+            <objects>
+                <viewController id="MYO-v6-Y2M" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tMO-Vw-Tl7"/>
+                        <viewControllerLayoutGuide type="bottom" id="YUV-Pc-meK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1ep-ig-yb8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Previous Sleep Times" id="hdJ-dK-S6J">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="4aq-LT-l0V"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHL-XF-SlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="676"/>
         </scene>
         <!--New Meal Controller-->
         <scene sceneID="fz2-d8-Olj">
@@ -339,7 +423,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="seePreviousSleep:" destination="QUy-BD-bpt" eventType="touchUpInside" id="LaQ-cM-cm2"/>
+                                    <segue destination="mTg-aR-Wgn" kind="modal" id="lru-Jh-XZx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -354,6 +438,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="115" y="-16"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="n9L-Dw-RuB">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="mTg-aR-Wgn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aam-IG-Njb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="63q-nU-dCs">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="M8C-cx-Zzk" kind="relationship" relationship="viewControllers" id="KZR-2c-LqU"/>
+                        <segue destination="DNG-vZ-HgY" kind="relationship" relationship="viewControllers" id="9qN-vK-sLK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wwb-rc-g6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="-16"/>
         </scene>
         <!--View Controller - Settings-->
         <scene sceneID="WYC-LD-FVe">
@@ -430,7 +534,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="71BA6037-23EA-4896-8D7D-AFB760B78929" width="30" height="30">
+        <image name="288951C6-6EDD-4E65-B451-F8B32EA02EE2" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
