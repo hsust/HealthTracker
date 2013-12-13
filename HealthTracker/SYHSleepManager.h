@@ -11,5 +11,8 @@
 @interface SYHSleepManager : NSObject
 
 @property (nonatomic) BOOL sleepBool;
+@property (nonatomic, strong) NSDate *startTime;
+@property (nonatomic, strong) NSDate *endTime;
+
 - (void) setSleepBool:(BOOL)sleepBool;
 @end

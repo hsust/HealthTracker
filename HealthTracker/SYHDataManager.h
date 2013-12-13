@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Meals.h"
 #import "SYHMealObject.h"
-#import <CoreData/CoreData.h>
-
+#import "Sleeps.h"
+#import "SYHSleepObject.h"
 
 @interface SYHDataManager : NSObject
 
@@ -18,5 +19,9 @@
 - (BOOL) addMealWithData : (SYHMealObject *) newMeal;
 - (NSArray *) allMeals;
 - (BOOL) deleteMeal : (Meals *) meal;
+
+- (BOOL) addSleepWithData: (SYHSleepObject *)newSleep;
+- (NSArray *) allSleeps;
+- (BOOL) deleteSleep: (Sleeps *) sleep;
 
 @end

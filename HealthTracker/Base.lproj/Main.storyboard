@@ -180,7 +180,7 @@
         <scene sceneID="xWF-Wp-BRA">
             <objects>
                 <navigationController title="Graph View" definesPresentationContext="YES" id="hRp-9r-czl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Graph" image="288951C6-6EDD-4E65-B451-F8B32EA02EE2" id="ODu-eN-VTk"/>
+                    <tabBarItem key="tabBarItem" title="Graph" image="30E37DD7-3E8F-486D-B5B6-9334EE6F5BD2" id="ODu-eN-VTk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ff2-IK-GR4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -534,7 +534,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="288951C6-6EDD-4E65-B451-F8B32EA02EE2" width="30" height="30">
+        <image name="30E37DD7-3E8F-486D-B5B6-9334EE6F5BD2" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -645,7 +645,6 @@ wxfGF8sX2hfeF+UX7Rf6F/8YARgDGAgYEBgTGBgYIBgjGDUYOBg9AAAAAAAAAgEAAAAAAAAAQgAAAAAA
 AAAAAAAAAAAAGD8
 </mutableData>
         </image>
-        <image name="first" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

@@ -44,9 +44,7 @@
         UIAlertView *missingFields = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You need to fill out all the fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         
         [missingFields show];
-    }
-    
-    else {
+    } else {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"hh:mm aa, MM/dd/yy"];
         NSDate *date = [formatter dateFromString:timeField.text];

@@ -26,6 +26,9 @@
 		CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */; };
 		CE4F1132185BA8EE00E08D01 /* SYHSleepManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1131185BA8EE00E08D01 /* SYHSleepManager.m */; };
 		CE4F1135185BB1A700E08D01 /* SYHSleepTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1134185BB1A700E08D01 /* SYHSleepTableViewController.m */; };
+		CE4F1138185BB49A00E08D01 /* SYHSleepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1137185BB49A00E08D01 /* SYHSleepObject.m */; };
+		CE4F113B185BB58F00E08D01 /* SleepModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1139185BB58F00E08D01 /* SleepModel.xcdatamodeld */; };
+		CE4F113E185BB5BB00E08D01 /* Sleeps.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F113D185BB5BB00E08D01 /* Sleeps.m */; };
 		CE6BC4271842FD64000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC4261842FD64000F4918 /* Meals.m */; };
 		CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45218431567000F4918 /* QuartzCore.framework */; };
 		CE6BC4F8184318D0000F4918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC4F7184318D0000F4918 /* Accelerate.framework */; };
@@ -68,7 +71,7 @@
 		1B0151FA1831BDAA00CF9F08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthTrackerTests.m; sourceTree = "<group>"; };
 		CE4996BA183B1A320011CB6A /* SYHMealType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealType.h; sourceTree = "<group>"; };
-		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
+		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
 		CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHMealsTableViewController.m; sourceTree = "<group>"; };
 		CE4F112D185BA75E00E08D01 /* SYHSleepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepViewController.h; sourceTree = "<group>"; };
@@ -77,6 +80,11 @@
 		CE4F1131185BA8EE00E08D01 /* SYHSleepManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepManager.m; sourceTree = "<group>"; };
 		CE4F1133185BB1A700E08D01 /* SYHSleepTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepTableViewController.h; sourceTree = "<group>"; };
 		CE4F1134185BB1A700E08D01 /* SYHSleepTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepTableViewController.m; sourceTree = "<group>"; };
+		CE4F1136185BB49A00E08D01 /* SYHSleepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepObject.h; sourceTree = "<group>"; };
+		CE4F1137185BB49A00E08D01 /* SYHSleepObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepObject.m; sourceTree = "<group>"; };
+		CE4F113A185BB58F00E08D01 /* SleepModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SleepModel.xcdatamodel; sourceTree = "<group>"; };
+		CE4F113C185BB5BB00E08D01 /* Sleeps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleeps.h; sourceTree = "<group>"; };
+		CE4F113D185BB5BB00E08D01 /* Sleeps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sleeps.m; sourceTree = "<group>"; };
 		CE6BC4251842FD64000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
 		CE6BC4261842FD64000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
 		CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Downloads/CorePlot_1.4/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
@@ -240,13 +248,18 @@
 			isa = PBXGroup;
 			children = (
 				CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */,
+				CE4F1139185BB58F00E08D01 /* SleepModel.xcdatamodeld */,
 				CE6BC4251842FD64000F4918 /* Meals.h */,
 				CE6BC4261842FD64000F4918 /* Meals.m */,
+				CE4F113C185BB5BB00E08D01 /* Sleeps.h */,
+				CE4F113D185BB5BB00E08D01 /* Sleeps.m */,
 				1B0151DD1831BDA900CF9F08 /* SYHAppDelegate.h */,
 				1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */,
+				CE4996BA183B1A320011CB6A /* SYHMealType.h */,
 				CE9EA0D91831C9F8004177BE /* SYHMealObject.h */,
 				CE9EA0DA1831C9F8004177BE /* SYHMealObject.m */,
-				CE4996BA183B1A320011CB6A /* SYHMealType.h */,
+				CE4F1136185BB49A00E08D01 /* SYHSleepObject.h */,
+				CE4F1137185BB49A00E08D01 /* SYHSleepObject.m */,
 				CE9EA0DC1831D2DD004177BE /* SYHDataManager.h */,
 				CE9EA0DD1831D2DD004177BE /* SYHDataManager.m */,
 				1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */,
@@ -486,6 +499,7 @@
 				CE4F1132185BA8EE00E08D01 /* SYHSleepManager.m in Sources */,
 				CE79C803184962D10040B670 /* SYHMealsGraphViewController.m in Sources */,
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
+				CE4F1138185BB49A00E08D01 /* SYHSleepObject.m in Sources */,
 				1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */,
 				CE4F1135185BB1A700E08D01 /* SYHSleepTableViewController.m in Sources */,
 				CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */,
@@ -493,9 +507,11 @@
 				CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */,
+				CE4F113B185BB58F00E08D01 /* SleepModel.xcdatamodeld in Sources */,
 				CE9EA0DB1831C9F8004177BE /* SYHMealObject.m in Sources */,
 				CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */,
 				CE6BC4271842FD64000F4918 /* Meals.m in Sources */,
+				CE4F113E185BB5BB00E08D01 /* Sleeps.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +760,16 @@
 			currentVersion = CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */;
 			name = MealModel.xcdatamodeld;
 			path = ../MealModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		CE4F1139185BB58F00E08D01 /* SleepModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE4F113A185BB58F00E08D01 /* SleepModel.xcdatamodel */,
+			);
+			currentVersion = CE4F113A185BB58F00E08D01 /* SleepModel.xcdatamodel */;
+			path = SleepModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
