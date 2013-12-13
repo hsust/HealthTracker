@@ -250,8 +250,8 @@
     // Axis Title Style
     CPTMutableTextStyle *axisTitleStyle = [CPTMutableTextStyle textStyle];
     axisTitleStyle.color = [CPTColor whiteColor];
-	axisTitleStyle.fontName = @"Helvetica-Neue";
-	axisTitleStyle.fontSize = 8.0f;
+	axisTitleStyle.fontName = @"HelveticaNeue";
+	axisTitleStyle.fontSize = 10.0f;
     
     // Axis Line Style
     CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
