@@ -15,6 +15,7 @@
 @property (nonatomic,strong) SYHDataManager *myDataManager;
 @property (nonatomic,strong) NSArray *allMeals;
 @property (nonatomic,strong) NSMutableDictionary *mealsPlotData;
+@property (nonatomic, strong) CPTGraphHostingView *hostView;
 
 @end
 
@@ -25,7 +26,7 @@
     if (!_myDataManager) {
         _myDataManager = [[SYHDataManager alloc] init];
     }
-    return _myDataManager;
+    return [[SYHDataManager alloc] init];
 }
 
 - (NSArray *) allMeals
@@ -33,7 +34,7 @@
     if (!_allMeals) {
         _allMeals = [self.myDataManager allMeals];
     }
-    return _allMeals;
+    return [self.myDataManager allMeals];
 }
 
 - (NSMutableDictionary *) mealsPlotData
@@ -78,18 +79,17 @@
     // viewDidAppear method is called.
     if (self.navigationController) {
         if (self.navigationController.navigationBarHidden == NO) {
-            
             // Depending upon the orientation reduce the height accordingly
             if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
                 maxFrame.origin.y += kNavigationBarLandscapeHeight;
+                maxFrame.size.height -= kNavigationBarLandscapeHeight;
             }
             else {
                 maxFrame.origin.y += kNavigationBarPortraitHeight;
+                maxFrame.size.height -= kNavigationBarPortraitHeight;
             }
         }
     }
-    
-    maxFrame.size.height -= kNavigationBarPortraitHeight;
     
     // Take into account if there is a toolbar present and visible
     if (self.tabBarController) {
@@ -124,6 +124,8 @@
     CPTGraph* graph = [[CPTXYGraph alloc] initWithFrame:self.hostView.bounds];
     [graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
     self.hostView.hostedGraph = graph;
+    // So that the frame/bounds get recalculated on every orientation change
+    self.hostView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin);
     
     // Graph frame and borders
     graph.plotAreaFrame.paddingTop    = 0;
