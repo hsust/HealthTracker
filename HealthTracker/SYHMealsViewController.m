@@ -22,8 +22,46 @@
 
 - (void)viewDidLoad
 {
+    [self addButtons];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mealBackground.png"]]];
+}
+
+- (void)addButtons
+{
+    UIButton *breakfastButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 40, 150, 60)];
+    [breakfastButton setTitle:@"+ New Breakfast" forState:UIControlStateNormal];
+    UIButton *lunchButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 100, 150, 60)];
+    [lunchButton setTitle:@"+ New Lunch" forState:UIControlStateNormal];
+    UIButton *dinnerButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 160, 150, 60)];
+    [dinnerButton setTitle:@"+ New Dinner" forState:UIControlStateNormal];
+    UIButton *snackButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 220, 150, 60)];
+    [snackButton setTitle:@"+ New Snack" forState:UIControlStateNormal];
+    UIButton *previousButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 300, 150, 60)];
+    [previousButton setTitle:@"See Previous Meals" forState: UIControlStateNormal];
+    NSArray *buttons = [[NSArray alloc] initWithObjects: breakfastButton, lunchButton, dinnerButton, snackButton, previousButton, nil];
+    
+    UIButton *button;
+    for (int i = 0; i < buttons.count; i++){
+        button = (UIButton *)[buttons objectAtIndex:i];
+        
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        if (i == buttons.count - 1){
+            [button addTarget:self
+                       action:@selector(seePreviousMeals:)
+             forControlEvents:UIControlEventTouchUpInside];
+            [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14]];
+        } else {
+            [button addTarget:self
+                       action:@selector(insertNewMeal:)
+             forControlEvents:UIControlEventTouchUpInside];
+            [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16]];
+        }
+        [button setTag: i];
+        [self.view addSubview:button];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -32,19 +70,28 @@
         SYHNewMealController *newMealController = (SYHNewMealController *) segue.destinationViewController;
         UIButton *mealTypeButton = (UIButton *) sender;
         
-        if (mealTypeButton.tag == 0){
-            newMealController.mealType = MealTypeBreakfast;
-        } else if (mealTypeButton.tag == 1){
-            newMealController.mealType = MealTypeLunch;
-        } else if (mealTypeButton.tag == 2){
-            newMealController.mealType = MealTypeDinner;
-        } else if (mealTypeButton.tag == 3){
-            newMealController.mealType = MealTypeSnack;
-        } else {
-            NSLog(@"Error with matching meal type.");
+        NSLog(@"%@, %i", mealTypeButton.titleLabel.text, mealTypeButton.tag);
+        
+        switch (mealTypeButton.tag) {
+            case 0:
+                newMealController.mealType = MealTypeBreakfast;
+                break;
+            case 1:
+                newMealController.mealType = MealTypeLunch;
+                break;
+            case 2:
+                newMealController.mealType = MealTypeDinner;
+                break;
+            case 3:
+                newMealController.mealType = MealTypeSnack;
+                break;
+            default:
+                NSLog(@"Error with matching meal type.");
+                break;
         }
     }
 }
+
 
 - (IBAction)insertNewMeal:(UIButton *)sender
 {

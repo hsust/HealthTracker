@@ -68,6 +68,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mealBackground.png"]]];
     
     // Set meal type
 //    NSLog(@"%@", self.mealType);
@@ -76,9 +77,9 @@
         mealTypeLabel.text = @"Breakfast";
     } else if (self.mealType == MealTypeLunch){
         mealTypeLabel.text = @"Lunch";
-    } else if (_mealType == MealTypeLunch){
+    } else if (_mealType == MealTypeDinner){
         mealTypeLabel.text = @"Dinner";
-    } else if (_mealType == MealTypeLunch){
+    } else if (_mealType == MealTypeSnack){
         mealTypeLabel.text = @"Snack";
     } else {
         NSLog(@"Error with matching meal type.");
