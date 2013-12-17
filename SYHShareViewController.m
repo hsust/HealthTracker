@@ -90,21 +90,23 @@
         NSString *string = [NSString stringWithFormat:@"%@",[self.allMeals objectAtIndex:i]];
         cvs = [cvs stringByAppendingString:string];
     }
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Users/bernadettehsu/Desktop"];
+//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Users/bernadettehsu/Desktop"];
     //If you want to store in a file the CVS
+//    NSArray * paths = NSSearchPathForDirectoriesInDomains (NSDesktopDirectory, NSUserDomainMask, YES);
+//    NSString * desktopPath = [paths objectAtIndex:0];
+    
+    
+    //get the documents directory:
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filename = @"FILENAME";
+
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    [cvs writeToFile:filename atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
+    
     
     NSLog(@"THIS IS THE DATA: %@",cvs );
-    [cvs writeToFile:filePath atomically:YES];
-//    
-//    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_allMeals];
-//    
-//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Users/bernadettehsu/Desktop"];
-//    
-//    NSError *error = nil;
-//    
-//    NSLog(@"DATA IS HERE: %@", data);
-//    [data writeToFile:filePath options:NSDataWritingAtomic error:&error];
-//    NSLog(@"Write returned error: %@", [error localizedDescription]);
 
 
 }

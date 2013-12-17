@@ -37,8 +37,26 @@
 {
     BOOL currSleepBool = [self.sleepManager sleepBool];
     if (currSleepBool){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm"];
+        NSString *title =[dateFormatter stringFromDate:self.sleepManager.startTime];
+        NSString *titleMain = @"Start: ";
+        titleMain = [titleMain stringByAppendingString:title];
+        titleMain = [titleMain stringByAppendingString:@"\n"];
+        
         self.sleepManager.endTime = [NSDate date];
-        [self saveNewSleep];
+
+        NSString *titleTwo = [dateFormatter stringFromDate:self.sleepManager.endTime];
+        NSString *title2 = @"End: ";
+        titleTwo = [title2 stringByAppendingString:titleTwo];
+        
+        NSString *all = [titleMain stringByAppendingString:titleTwo];
+        
+        UIAlertView *check= [[UIAlertView alloc] initWithTitle:all message:@"Do you want to save this sleep?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+        
+        [check show];
+        
+        
     } else {
         self.sleepManager.startTime = [NSDate date];
     }
@@ -46,6 +64,25 @@
     [self.sleepManager setSleepBool:!currSleepBool];
     [self changeSleepText:sender];
     
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the OK/Cancel buttons
+    if (buttonIndex == 0)
+    {
+        self.sleepManager.endTime = [NSDate date];
+        [self saveNewSleep];
+    }
+    else
+    {
+        NSLog(@"cancel");
+    }
+}
+
+-(void)changeStatus:(UIButton *) sender
+{
+    self.sleepManager.endTime = [NSDate date];
+    [self saveNewSleep];
 }
 
 
@@ -66,6 +103,7 @@
         [missingFields show];
         return;
     } else {
+    
         
 //        UIAlertView *checkTimes = [[UIAlertView alloc] initWithTitle:@"Saving" message:@"New sleep duration being stored." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
 //        [checkTimes show];
