@@ -137,6 +137,7 @@
 	plotSpace.allowsUserInteraction = YES;
 }
 
+
 -(void)configurePlots {
     NSTimeInterval oneDay = 24 * 60 * 60;
     
@@ -151,6 +152,7 @@
     // Set up plotspace
     plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
                                                     length:CPTDecimalFromFloat(8 * oneDay)];
+ 
     
 	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yMin) length:CPTDecimalFromFloat(yMax)];
     
@@ -185,7 +187,6 @@
     components.hour = 0;
     components.minute = 0;
     components.second = 0;
-//    NSDate *beginningOfToday = [calendar dateFromComponents:components];
     components.day -= 7;
     NSDate *aWeekAgo = [calendar dateFromComponents:components];
     
@@ -228,7 +229,6 @@
     components.hour = 0;
     components.minute = 0;
     components.second = 0;
-//    NSDate *beginningOfToday = [calendar dateFromComponents:components];
     components.day -= 7;
     NSDate *aWeekAgo = [calendar dateFromComponents:components];
     
@@ -264,14 +264,16 @@
     x.labelFormatter            = xAxisFormatter;
     x.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0);
     
+    
+    
     CPTXYAxis *y                  = axisSet.yAxis;
 	y.title                     = @"Duration";
 	y.titleTextStyle            = axisTitleStyle;
 	y.titleOffset               = 40.0f;
-    y.majorIntervalLength       = CPTDecimalFromFloat(1.0); // y axis interval = 1 week
+    y.majorIntervalLength       = CPTDecimalFromFloat(1.0);
     y.minorTicksPerInterval     = 0;
     y.labelTextStyle            = axisTitleStyle;
-    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0);
+    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(1.0);
 }
 
 
