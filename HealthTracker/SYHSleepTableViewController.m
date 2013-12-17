@@ -83,7 +83,6 @@
     double hours = interval / 3600.0;             // integer division to get the hours part
     
     NSDecimalNumber *time = [[NSDecimalNumber alloc] initWithDouble:round(hours*100)/100];
-
     
     UILabel *dateLabel = (id)[cell viewWithTag:1];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

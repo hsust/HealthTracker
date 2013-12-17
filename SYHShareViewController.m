@@ -11,14 +11,30 @@
 
 @interface SYHShareViewController ()
 
+
 @end
 
 @implementation SYHShareViewController
 
 - (void)viewDidLoad
 {
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"settingsBackground.png"]]];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModal:)];
+//    navItem.leftBarButtonItem = backButton;
+//    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(submitNewMeal:)];
+//    [doneButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17]}
+//                              forState:UIControlStateNormal];
+//    navItem.rightBarButtonItem = doneButton;
+    
+//    UIColor *titleColor = [UIColor colorWithRed:29/255.0 green:98/255.0 blue:240/255.0 alpha:1.0];
+   
+}
+
+- (IBAction)dismissModal:(UIButton *) sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)share:(id)sender

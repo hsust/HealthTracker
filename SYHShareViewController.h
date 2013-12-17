@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface SYHShareViewController : UIViewController <UIActionSheetDelegate>
+{
+    IBOutlet UINavigationItem *navItem;
+}
 
 -(IBAction)share:(id)sender;
+- (IBAction)dismissModal:(id) sender;
 
 @end
