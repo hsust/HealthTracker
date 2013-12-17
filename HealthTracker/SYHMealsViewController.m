@@ -70,8 +70,6 @@
         SYHNewMealController *newMealController = (SYHNewMealController *) segue.destinationViewController;
         UIButton *mealTypeButton = (UIButton *) sender;
         
-        NSLog(@"%@, %i", mealTypeButton.titleLabel.text, mealTypeButton.tag);
-        
         switch (mealTypeButton.tag) {
             case 0:
                 newMealController.mealType = MealTypeBreakfast;

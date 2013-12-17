@@ -82,7 +82,11 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
-    timeField.text = [dateFormatter stringFromDate:[NSDate date]];
+//    timeField.text = [dateFormatter stringFromDate:[NSDate date]];
+    
+    mealField.text = @"What did you eat?";
+    mealField.textColor = [UIColor colorWithWhite: 0.60 alpha:1];
+    mealField.delegate = self;
     
     // Tap recognizer to dismiss keyboard
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -97,23 +101,25 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModal:)];
     navItem.leftBarButtonItem = backButton;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(submitNewMeal:)];
+    [doneButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17]}
+                                     forState:UIControlStateNormal];
     navItem.rightBarButtonItem = doneButton;
-    
-    navItem.titleView.tintColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:230/255.0];
+
+    UIColor *titleColor = [UIColor colorWithRed:29/255.0 green:98/255.0 blue:240/255.0 alpha:1.0];
+    navBar.titleTextAttributes = [NSDictionary dictionaryWithObject:titleColor forKey:NSForegroundColorAttributeName];
     
     // Set meal type/title
     if (_mealType == MealTypeBreakfast){
-        navItem.title = @"BREAKFAST";
+        navItem.title = @"Breakfast";
     } else if (self.mealType == MealTypeLunch){
-        navItem.title = @"LUNCH";
+        navItem.title = @"Lunch";
     } else if (_mealType == MealTypeDinner){
-        navItem.title = @"DINNER";
+        navItem.title = @"Dinner";
     } else if (_mealType == MealTypeSnack){
-        navItem.title = @"SNACK";
+        navItem.title = @"Snack";
     } else {
         NSLog(@"Error with matching meal type.");
-    }
-
+    }   
 }
 
 - (void)pickerChanged:(id)sender
@@ -148,6 +154,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - uitextview placeholder
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    mealField.text = @"";
+    mealField.textColor = [UIColor blackColor];
+    return YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView
+{
+    
+    if (mealField.text.length == 0){
+        mealField.textColor = [UIColor lightGrayColor];
+        mealField.text = @"Comment";
+        [mealField resignFirstResponder];
+    }
 }
 
 @end
