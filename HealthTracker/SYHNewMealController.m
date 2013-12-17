@@ -82,7 +82,11 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a, MM/dd/YY"];
-    timeField.text = [dateFormatter stringFromDate:[NSDate date]];
+//    timeField.text = [dateFormatter stringFromDate:[NSDate date]];
+    
+    mealField.text = @"What did you eat?";
+    mealField.textColor = [UIColor colorWithWhite: 0.60 alpha:1];
+    mealField.delegate = self;
     
     // Tap recognizer to dismiss keyboard
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -115,8 +119,7 @@
         navItem.title = @"Snack";
     } else {
         NSLog(@"Error with matching meal type.");
-    }
-    
+    }   
 }
 
 - (void)pickerChanged:(id)sender
@@ -151,6 +154,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - uitextview placeholder
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    mealField.text = @"";
+    mealField.textColor = [UIColor blackColor];
+    return YES;
+}
+
+-(void) textViewDidChange:(UITextView *)textView
+{
+    
+    if (mealField.text.length == 0){
+        mealField.textColor = [UIColor lightGrayColor];
+        mealField.text = @"Comment";
+        [mealField resignFirstResponder];
+    }
 }
 
 @end

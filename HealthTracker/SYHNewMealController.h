@@ -13,7 +13,7 @@
 {
     IBOutlet UILabel *mealTypeLabel;
     IBOutlet UITextField *timeField;
-    IBOutlet UITextField *mealField;
+    IBOutlet UITextView *mealField;
     IBOutlet UINavigationBar *navBar;
     IBOutlet UINavigationItem *navItem;
 }
