@@ -9,7 +9,7 @@
 #import "SYHAlarmViewController.h"
 
 @interface SYHAlarmViewController ()
-
+@property (nonatomic, strong) NSDate *currentAlarm;
 @end
 
 @implementation SYHAlarmViewController
@@ -18,8 +18,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sleepBackground2.png"]]];
     dateTimePicker.date = [NSDate date];
+    dateTimePicker.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (IBAction)dismissModal:(id) sender
