@@ -159,7 +159,7 @@
     // Plot symbols
     CPTPlotSymbol *sleepSymbol = [CPTPlotSymbol trianglePlotSymbol ];
     sleepSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    sleepSymbol.size = CGSizeMake(7.0, 7.0);
+    sleepSymbol.size = CGSizeMake(10.0, 10.0);
     // Set up line style
     CPTMutableLineStyle *lineStyle = nil;
     

@@ -15,13 +15,13 @@
 		1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151DE1831BDA900CF9F08 /* SYHAppDelegate.m */; };
 		1B0151E21831BDA900CF9F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E01831BDA900CF9F08 /* Main.storyboard */; };
 		1B0151E51831BDA900CF9F08 /* SYHMealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */; };
-		1B0151EA1831BDAA00CF9F08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151E91831BDAA00CF9F08 /* Images.xcassets */; };
 		1B0151F11831BDAA00CF9F08 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151F01831BDAA00CF9F08 /* XCTest.framework */; };
 		1B0151F21831BDAA00CF9F08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151CE1831BDA900CF9F08 /* Foundation.framework */; };
 		1B0151F31831BDAA00CF9F08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151D21831BDA900CF9F08 /* UIKit.framework */; };
 		1B0151FB1831BDAA00CF9F08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151F91831BDAA00CF9F08 /* InfoPlist.strings */; };
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
 		1B5C48921860003B0068561B /* SYHSleepGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C48911860003B0068561B /* SYHSleepGraphViewController.m */; };
+		1B5C489C1860B7FE0068561B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B5C489B1860B7FE0068561B /* Images.xcassets */; };
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
 		CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */; };
@@ -67,7 +67,6 @@
 		1B0151E11831BDA900CF9F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B0151E31831BDA900CF9F08 /* SYHMealsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYHMealsViewController.h; sourceTree = "<group>"; };
 		1B0151E41831BDA900CF9F08 /* SYHMealsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYHMealsViewController.m; sourceTree = "<group>"; };
-		1B0151E91831BDAA00CF9F08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B0151EF1831BDAA00CF9F08 /* HealthTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B0151F01831BDAA00CF9F08 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1B0151F81831BDAA00CF9F08 /* HealthTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HealthTrackerTests-Info.plist"; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthTrackerTests.m; sourceTree = "<group>"; };
 		1B5C48901860003B0068561B /* SYHSleepGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepGraphViewController.h; sourceTree = "<group>"; };
 		1B5C48911860003B0068561B /* SYHSleepGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepGraphViewController.m; sourceTree = "<group>"; };
+		1B5C489B1860B7FE0068561B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE4996BA183B1A320011CB6A /* SYHMealType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealType.h; sourceTree = "<group>"; };
 		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 				CE57F7B6185FFD59007863A5 /* SYHShareViewController.h */,
 				CE57F7B7185FFD59007863A5 /* SYHShareViewController.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
-				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
+				1B5C489B1860B7FE0068561B /* Images.xcassets */,
 				1B0151D51831BDA900CF9F08 /* Supporting Files */,
 			);
 			path = HealthTracker;
@@ -490,7 +490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B0151EA1831BDAA00CF9F08 /* Images.xcassets in Resources */,
+				1B5C489C1860B7FE0068561B /* Images.xcassets in Resources */,
 				1B0151D91831BDA900CF9F08 /* InfoPlist.strings in Resources */,
 				1B0151E21831BDA900CF9F08 /* Main.storyboard in Resources */,
 			);

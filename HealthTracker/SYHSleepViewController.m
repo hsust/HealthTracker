@@ -104,9 +104,6 @@
         return;
     } else {
     
-        
-//        UIAlertView *checkTimes = [[UIAlertView alloc] initWithTitle:@"Saving" message:@"New sleep duration being stored." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-//        [checkTimes show];
         SYHSleepObject *newSleep = [[SYHSleepObject alloc] init];
         newSleep.startTime = self.sleepManager.startTime;
         newSleep.endTime = self.sleepManager.endTime;

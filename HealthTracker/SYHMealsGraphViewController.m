@@ -157,6 +157,7 @@
                                                     length:CPTDecimalFromFloat(-oneDay)];
     
     // Plot symbols
+    
     CPTPlotSymbol *breakfastPlotSymbol = [CPTPlotSymbol trianglePlotSymbol ];
     breakfastPlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
     breakfastPlotSymbol.size = CGSizeMake(7.0, 7.0);
