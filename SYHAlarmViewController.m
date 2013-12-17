@@ -21,7 +21,8 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sleepBackground2.png"]]];
     dateTimePicker.date = [NSDate date];
     dateTimePicker.backgroundColor = [UIColor whiteColor];
-
+    self.currentAlarm = nil;
+    [self setAlarmText];
 }
 
 - (IBAction)dismissModal:(id) sender
@@ -59,6 +60,9 @@
     
     NSString *dateTimeString = [dateFormatter stringFromDate:dateTimePicker.date];
     
+    self.currentAlarm = dateTimePicker.date;
+    [self setAlarmText];
+    
     NSLog(@"Alarm button set: %@",dateTimeString);
     
     [self scheduleLocalNotification:dateTimePicker.date];
@@ -70,6 +74,18 @@
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [self presentMessage:@"Alarm cancelled."];
+}
+
+-(void) setAlarmText
+{
+    if (!self.currentAlarm){
+        [currentAlarmText setText: @"None"];
+    } else {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy h:m a"];
+        [currentAlarmText setText: [dateFormatter stringFromDate:self.currentAlarm]];
+    }
+    
 }
 
 //- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
