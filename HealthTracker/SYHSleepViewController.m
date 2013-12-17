@@ -31,12 +31,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sleepBackground2.png"]]];
 }
 
 - (IBAction)changeAndSaveSleepStatus:(UIButton *) sender
 {
     BOOL currSleepBool = [self.sleepManager sleepBool];
-    if (currSleepBool){
+
+    if (currSleepBool && !self.sleepManager.startTime ){
+        NSLog(@"startTime: %@ endtime: %@", self.sleepManager.startTime, self.sleepManager.endTime);
+        UIAlertView *missingFields = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something is wrong" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [missingFields show];
+    } else if (currSleepBool){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"HH:mm"];
         NSString *title =[dateFormatter stringFromDate:self.sleepManager.startTime];
@@ -55,8 +62,6 @@
         UIAlertView *check= [[UIAlertView alloc] initWithTitle:all message:@"Do you want to save this sleep?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
         
         [check show];
-        
-        
     } else {
         self.sleepManager.startTime = [NSDate date];
     }
@@ -89,9 +94,9 @@
 - (void)changeSleepText:(UIButton *) sender
 {
     if (self.sleepManager.sleepBool){
-        [_sleepButton setTitle:@"Wake up" forState:UIControlStateNormal];
+        [_sleepButton setTitle:@"Wake up!" forState:UIControlStateNormal];
     } else {
-        [_sleepButton setTitle:@"Go to sleep" forState:UIControlStateNormal];
+        [_sleepButton setTitle:@"Go to sleep!" forState:UIControlStateNormal];
     }
 }
 
@@ -103,7 +108,6 @@
         [missingFields show];
         return;
     } else {
-    
         SYHSleepObject *newSleep = [[SYHSleepObject alloc] init];
         newSleep.startTime = self.sleepManager.startTime;
         newSleep.endTime = self.sleepManager.endTime;

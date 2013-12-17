@@ -11,6 +11,9 @@
 @interface SYHAlarmViewController : UIViewController
 {
     IBOutlet UIDatePicker *dateTimePicker;
+    IBOutlet UIButton *setAlarm;
+    IBOutlet UIButton *cancelAlarm;
+    IBOutlet UILabel *currentAlarm;
 }
 
 //- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
