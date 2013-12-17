@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYHDataManager.h"
 
 @interface SYHShareViewController : UIViewController <UIActionSheetDelegate>
 
 -(IBAction)share:(id)sender;
+-(IBAction)exportMeals:(id)sender;
 
 @end

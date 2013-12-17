@@ -11,9 +11,29 @@
 
 @interface SYHShareViewController ()
 
+@property (nonatomic,strong) SYHDataManager *myDataManager;
+@property (nonatomic,strong) NSMutableArray *allMeals;
+
 @end
 
 @implementation SYHShareViewController
+
+- (SYHDataManager *) myDataManager
+{
+    if (!_myDataManager) {
+        _myDataManager = [[SYHDataManager alloc] init];
+    }
+    return _myDataManager;
+}
+
+- (NSMutableArray *) allMeals
+{
+    if (!_allMeals) {
+        _allMeals = [[NSMutableArray alloc] initWithArray: [self.myDataManager allMeals]];
+    }
+    return _allMeals;
+}
+
 
 - (void)viewDidLoad
 {
@@ -59,6 +79,34 @@
             [alertView show];
         }
     }
+}
+
+- (IBAction)exportMeals:(id)sender
+{
+    
+    NSString *cvs = @"";
+    NSLog(@"COUNT: %i",[self.allMeals count]);
+    for (int i = 0; i < [self.allMeals count]; i++) {
+        NSString *string = [NSString stringWithFormat:@"%@",[self.allMeals objectAtIndex:i]];
+        cvs = [cvs stringByAppendingString:string];
+    }
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Users/bernadettehsu/Desktop"];
+    //If you want to store in a file the CVS
+    
+    NSLog(@"THIS IS THE DATA: %@",cvs );
+    [cvs writeToFile:filePath atomically:YES];
+//    
+//    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_allMeals];
+//    
+//    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Users/bernadettehsu/Desktop"];
+//    
+//    NSError *error = nil;
+//    
+//    NSLog(@"DATA IS HERE: %@", data);
+//    [data writeToFile:filePath options:NSDataWritingAtomic error:&error];
+//    NSLog(@"Write returned error: %@", [error localizedDescription]);
+
+
 }
 
 

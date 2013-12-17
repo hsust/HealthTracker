@@ -140,6 +140,7 @@
 	// Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
 	plotSpace.allowsUserInteraction = YES;
+    
 }
 
 -(void)configurePlots {
@@ -297,6 +298,8 @@
     y.labelTextStyle            = axisTitleStyle;
     y.labelFormatter            = yAxisFormatter;
     y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0);
+    
+    
 }
 
 #pragma mark - Rotation
