@@ -86,7 +86,7 @@
     UILabel *dateLabel = (id)[cell viewWithTag:1];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yy"];
-    NSString *date =[dateFormatter stringFromDate:currentSleep.startTime];
+    NSString *date =[dateFormatter stringFromDate:currentSleep.endTime];
     dateLabel.text = [@"Date: " stringByAppendingString: date];
     
     

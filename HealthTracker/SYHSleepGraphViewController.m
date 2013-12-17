@@ -197,7 +197,7 @@
 
     for ( int i = [self.allSleeps count] - 1; i >= 0; i--) {
         currSleep = [_allSleeps objectAtIndex:i];
-        currDate = currSleep.startTime;
+        currDate = currSleep.endTime;
         id x = [NSDecimalNumber numberWithDouble:[[self convertToBeginningOfDay:currDate] timeIntervalSinceDate: aWeekAgo]];
         
         NSTimeInterval interval = [currSleep.endTime timeIntervalSinceDate:currSleep.startTime];

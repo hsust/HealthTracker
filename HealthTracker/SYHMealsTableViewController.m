@@ -60,15 +60,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];UIImage *bg = [UIImage imageNamed:@"mealBackground.png"];
-    [bg drawInRect:self.view.window.bounds];
-    UIImageView *bgView = [[UIImageView alloc] initWithFrame:self.view.window.bounds];
-    bgView.image = bg;
-    
-    [self.view setBackgroundColor:[UIColor blueColor]];
-    
-//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:bgView]];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

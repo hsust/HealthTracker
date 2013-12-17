@@ -32,6 +32,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sleepBackground2.png"]]];
+//    [self addData];
 }
 
 - (IBAction)changeAndSaveSleepStatus:(UIButton *) sender
@@ -129,6 +130,33 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addData
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components: NSYearCalendarUnit|NSMonthCalendarUnit|
+                                    NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                                               fromDate:[NSDate date]];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    components.day = 13;
+    components.month = 12;
+    NSDate *startDate = [calendar dateFromComponents:components];
+    components.hour = 10;
+    components.minute = 44;
+    components.second = 0;
+    components.day = 13;
+    components.month = 12;
+    NSDate *endDate = [calendar dateFromComponents:components];
+    
+    SYHSleepObject *newSleep = [[SYHSleepObject alloc] init];
+    newSleep.startTime = startDate;
+    newSleep.endTime = endDate;
+    SYHDataManager *mySleepDataManager = [[SYHDataManager alloc] init];
+    [mySleepDataManager addSleepWithData:newSleep];
+    
 }
 
 @end
