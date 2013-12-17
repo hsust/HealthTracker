@@ -21,6 +21,7 @@
 		1B0151F31831BDAA00CF9F08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0151D21831BDA900CF9F08 /* UIKit.framework */; };
 		1B0151FB1831BDAA00CF9F08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B0151F91831BDAA00CF9F08 /* InfoPlist.strings */; };
 		1B0151FD1831BDAA00CF9F08 /* HealthTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */; };
+		1B5C48921860003B0068561B /* SYHSleepGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C48911860003B0068561B /* SYHSleepGraphViewController.m */; };
 		CE4996C0183B216A0011CB6A /* MealModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4996BE183B216A0011CB6A /* MealModel.xcdatamodeld */; };
 		CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4996C8183B32500011CB6A /* SYHMealsTableViewController.m */; };
 		CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */; };
@@ -72,6 +73,8 @@
 		1B0151F81831BDAA00CF9F08 /* HealthTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HealthTrackerTests-Info.plist"; sourceTree = "<group>"; };
 		1B0151FA1831BDAA00CF9F08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B0151FC1831BDAA00CF9F08 /* HealthTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthTrackerTests.m; sourceTree = "<group>"; };
+		1B5C48901860003B0068561B /* SYHSleepGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHSleepGraphViewController.h; sourceTree = "<group>"; };
+		1B5C48911860003B0068561B /* SYHSleepGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHSleepGraphViewController.m; sourceTree = "<group>"; };
 		CE4996BA183B1A320011CB6A /* SYHMealType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealType.h; sourceTree = "<group>"; };
 		CE4996BF183B216A0011CB6A /* MealModel.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = MealModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4996C7183B32500011CB6A /* SYHMealsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHMealsTableViewController.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */,
 				CE4F1133185BB1A700E08D01 /* SYHSleepTableViewController.h */,
 				CE4F1134185BB1A700E08D01 /* SYHSleepTableViewController.m */,
+				1B5C48901860003B0068561B /* SYHSleepGraphViewController.h */,
+				1B5C48911860003B0068561B /* SYHSleepGraphViewController.m */,
 				CE57F7B4185FFD59007863A5 /* SYHAlarmViewController.h */,
 				CE57F7B5185FFD59007863A5 /* SYHAlarmViewController.m */,
 				CE57F7B6185FFD59007863A5 /* SYHShareViewController.h */,
@@ -517,6 +522,7 @@
 				CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */,
 				CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */,
 				CE57F7B8185FFD59007863A5 /* SYHAlarmViewController.m in Sources */,
+				1B5C48921860003B0068561B /* SYHSleepGraphViewController.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */,
 				CE4F113B185BB58F00E08D01 /* SleepModel.xcdatamodeld in Sources */,
@@ -648,7 +654,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/user/Downloads/CorePlot_1.4/Binaries/MacOS,
+					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/MacOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
@@ -657,8 +663,8 @@
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
-					/Users/user/CIS195/HealthTracker,
+					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/iOS,
+					/Users/bernadettehsu/CIS195/HealthTracker,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -673,7 +679,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/user/Downloads/CorePlot_1.4/Binaries/MacOS,
+					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/MacOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
@@ -682,8 +688,8 @@
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/user/Downloads/CorePlot_1.4/Binaries/iOS,
-					/Users/user/CIS195/HealthTracker,
+					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/iOS,
+					/Users/bernadettehsu/CIS195/HealthTracker,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,25 +1,32 @@
 //
-//  SYHMealsGraphViewController.m
+//  SYHSleepGraphViewController.m
 //  HealthTracker
 //
-//  Created by User on 11/29/13.
+//  Created by Stephanie Hsu on 12/16/13.
 //  Copyright (c) 2013 Stephanie Hsu. All rights reserved.
 //
-#import "SYHMealsGraphViewController.h"
-#import "SYHDataManager.h"
-#import "SYHMealType.h"
-#import "Meals.h"
 
-@interface SYHMealsGraphViewController ()
+#import "SYHSleepGraphViewController.h"
+#import "SYHDataManager.h"
+#import "Sleeps.h"
+
+@interface SYHSleepGraphViewController ()
+
 
 @property (nonatomic,strong) SYHDataManager *myDataManager;
-@property (nonatomic,strong) NSArray *allMeals;
+@property (nonatomic,strong) NSArray *allSleeps;
+@property (nonatomic,strong) NSArray *plotData;
+
 @property (nonatomic,strong) NSMutableDictionary *mealsPlotData;
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 
+@property (nonatomic,strong) CPTBarPlot *sleepPlot;
+
+
 @end
 
-@implementation SYHMealsGraphViewController
+@implementation SYHSleepGraphViewController
+
 
 - (SYHDataManager *) myDataManager
 {
@@ -29,24 +36,12 @@
     return [[SYHDataManager alloc] init];
 }
 
-- (NSArray *) allMeals
+- (NSArray *) allSleeps
 {
-    if (!_allMeals) {
-        _allMeals = [self.myDataManager allMeals];
+    if (!_allSleeps) {
+        _allSleeps = [self.myDataManager allSleeps];
     }
-    return [self.myDataManager allMeals];
-}
-
-- (NSMutableDictionary *) mealsPlotData
-{
-    if (!_mealsPlotData){
-        _mealsPlotData = [[NSMutableDictionary alloc] init];
-        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"BreakfastData"];
-        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"LunchData"];
-        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"DinnerData"];
-        [_mealsPlotData setObject:[NSMutableArray array] forKey:@"SnackData"];
-    }
-    return _mealsPlotData;
+    return [self.myDataManager allSleeps];
 }
 
 
@@ -105,7 +100,7 @@
     [self configureGraph];
     [self configurePlots];
     [self configureAxes];
-    if (![self.allMeals count]){
+    if (![self.allSleeps count]){
         return;
     }
     [self addData];
@@ -149,48 +144,35 @@
 	CPTGraph *graph = self.hostView.hostedGraph;
 	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     
+    CGFloat yMin = 0.0f;
+	CGFloat yMax = 24.0f;  // should determine dynamically based on max pric
+
+    
     // Set up plotspace
     plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
                                                     length:CPTDecimalFromFloat(8 * oneDay)];
-    plotSpace.globalYRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
-                                                    length:CPTDecimalFromFloat(-oneDay)];
+    
+	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yMin) length:CPTDecimalFromFloat(yMax)];
     
     // Plot symbols
-    CPTPlotSymbol *breakfastPlotSymbol = [CPTPlotSymbol trianglePlotSymbol ];
-    breakfastPlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    breakfastPlotSymbol.size = CGSizeMake(7.0, 7.0);
-    CPTPlotSymbol *lunchPlotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-    lunchPlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    lunchPlotSymbol.size = CGSizeMake(7.0, 7.0);
-    CPTPlotSymbol *dinnerPlotSymbol = [CPTPlotSymbol crossPlotSymbol];
-    dinnerPlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    dinnerPlotSymbol.size = CGSizeMake(7.0, 7.0);
-    CPTPlotSymbol *snackPlotSymbol = [CPTPlotSymbol rectanglePlotSymbol];
-    snackPlotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
-    snackPlotSymbol.size = CGSizeMake(7.0, 7.0);
+    CPTPlotSymbol *sleepSymbol = [CPTPlotSymbol trianglePlotSymbol ];
+    sleepSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+    sleepSymbol.size = CGSizeMake(7.0, 7.0);
     // Set up line style
     CPTMutableLineStyle *lineStyle = nil;
     
-    // Create Plots
-    CPTScatterPlot *breakfastPlot = [[CPTScatterPlot alloc] init];
-    breakfastPlot.identifier = @"Breakfast Plot";
-    breakfastPlot.plotSymbol = breakfastPlotSymbol;
-    CPTScatterPlot *lunchPlot = [[CPTScatterPlot alloc] init];
-    lunchPlot.identifier = @"Lunch Plot";
-    lunchPlot.plotSymbol = lunchPlotSymbol;
-    CPTScatterPlot *dinnerPlot = [[CPTScatterPlot alloc] init];
-    dinnerPlot.identifier = @"Dinner Plot";
-    dinnerPlot.plotSymbol = dinnerPlotSymbol;
-    CPTScatterPlot *snackPlot = [[CPTScatterPlot alloc] init];
-    snackPlot.identifier = @"Snack Plot";
-    snackPlot.plotSymbol = snackPlotSymbol;
-    NSArray *plots = [NSArray arrayWithObjects:breakfastPlot, lunchPlot, dinnerPlot, snackPlot, nil];
+    CPTScatterPlot *sleepPlot = [[CPTScatterPlot alloc] init];
+    sleepPlot.identifier = @"Sleep Plot";
+    sleepPlot.plotSymbol = sleepSymbol;
+   
+    NSArray *plots = [NSArray arrayWithObjects:sleepPlot, nil];
     for (CPTScatterPlot *plot in plots) {
         plot.dataSource = self;
         plot.delegate = self;
         plot.dataLineStyle = lineStyle;
         [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
     }
+
 }
 
 -(void)addData
@@ -203,40 +185,39 @@
     components.hour = 0;
     components.minute = 0;
     components.second = 0;
-    NSDate *beginningOfToday = [calendar dateFromComponents:components];
+//    NSDate *beginningOfToday = [calendar dateFromComponents:components];
     components.day -= 7;
     NSDate *aWeekAgo = [calendar dateFromComponents:components];
     
-    SYHMealObject *currMeal;
+    SYHSleepObject *currSleep;
     NSDate *currDate;
-    NSString *mealKey;
-    for ( int i = [self.allMeals count] - 1; i >= 0; i--) {
-        currMeal = [_allMeals objectAtIndex:i];
-        currDate = currMeal.mealTime;
+    
+    NSMutableArray *newData = [NSMutableArray array];
+
+    for ( int i = [self.allSleeps count] - 1; i >= 0; i--) {
+        currSleep = [_allSleeps objectAtIndex:i];
+        currDate = currSleep.startTime;
         id x = [NSDecimalNumber numberWithDouble:[[self convertToBeginningOfDay:currDate] timeIntervalSinceDate: aWeekAgo]];
-        id y = [NSDecimalNumber numberWithDouble:[[self convertToCurrentDate:currDate] timeIntervalSinceDate: beginningOfToday]];
-        if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeBreakfast]]){
-            mealKey = @"BreakfastData";
-        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeLunch]]){
-            mealKey = @"LunchData";
-        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeDinner]]){
-            mealKey = @"DinnerData";
-        } else if ([currMeal.mealType isEqualToNumber: [NSNumber numberWithInt:MealTypeSnack]]){
-            mealKey = @"SnackData";
-        } else {
-        }
         
+        NSTimeInterval interval = [currSleep.endTime timeIntervalSinceDate:currSleep.startTime];
+        double hours = interval / 3600;             // integer division to get the hours part
+        
+        NSDecimalNumber *time = [[NSDecimalNumber alloc] initWithDouble:hours];
+        
+        id y = time;
+
         NSString *date = [NSString stringWithFormat:@"DATE: %@",x];
         NSLog(@"%@",date);
-        
-        
-        [[self.mealsPlotData objectForKey:mealKey] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                              x,
-                                                              [NSNumber numberWithInt:CPTScatterPlotFieldX],
-                                                              y,
-                                                              [NSNumber numberWithInt:CPTScatterPlotFieldY],
-                                                              nil]];
+        // Add some data
+        [newData addObject:
+             [NSDictionary dictionaryWithObjectsAndKeys: x,
+              [NSNumber numberWithInt:CPTScatterPlotFieldX],
+              y, [NSNumber numberWithInt:CPTScatterPlotFieldY],
+              nil]];
     }
+    NSLog(@"New Data %@",newData);
+    _plotData = newData;
+    
 }
 
 -(void)configureAxes {
@@ -247,7 +228,7 @@
     components.hour = 0;
     components.minute = 0;
     components.second = 0;
-    NSDate *beginningOfToday = [calendar dateFromComponents:components];
+//    NSDate *beginningOfToday = [calendar dateFromComponents:components];
     components.day -= 7;
     NSDate *aWeekAgo = [calendar dateFromComponents:components];
     
@@ -268,11 +249,6 @@
     CPTTimeFormatter *xAxisFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
     xAxisFormatter.referenceDate = aWeekAgo;
     
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"h a"];
-    CPTTimeFormatter *yAxisFormatter    = [[CPTTimeFormatter alloc] initWithDateFormatter:timeFormatter];
-    yAxisFormatter.referenceDate        = beginningOfToday;
-    
     // Axes
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)self.hostView.hostedGraph.axisSet;
     axisSet.xAxis.axisConstraints   = [CPTConstraints constraintWithLowerOffset:0];
@@ -289,15 +265,15 @@
     x.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0);
     
     CPTXYAxis *y                  = axisSet.yAxis;
-	y.title                     = @"Time";
+	y.title                     = @"Duration";
 	y.titleTextStyle            = axisTitleStyle;
 	y.titleOffset               = 40.0f;
-    y.majorIntervalLength       = CPTDecimalFromFloat(60 * 60); // y axis interval = 1 week
+    y.majorIntervalLength       = CPTDecimalFromFloat(1.0); // y axis interval = 1 week
     y.minorTicksPerInterval     = 0;
     y.labelTextStyle            = axisTitleStyle;
-    y.labelFormatter            = yAxisFormatter;
     y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0);
 }
+
 
 #pragma mark - Rotation
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -306,33 +282,16 @@
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    if ([plot.identifier isEqual:@"Breakfast Plot"]) {
-        return [[self.mealsPlotData objectForKey:@"BreakfastData"] count];
-    } else if ([plot.identifier isEqual:@"Lunch Plot"]) {
-        return [[self.mealsPlotData objectForKey:@"LunchData"] count];
-    } else if ([plot.identifier isEqual:@"Dinner Plot"]) {
-        return [[self.mealsPlotData objectForKey:@"DinnerData"] count];
-    } else if ([plot.identifier isEqual:@"Snack Plot"]) {
-        return [[self.mealsPlotData objectForKey:@"SnackData"] count];
-    }
-    return 0;
+    NSLog(@"numberOfRecordsForPlot %i", [_plotData count]);
+    return [_plotData count];
 }
 
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    NSString *mealKey;
-    if ([plot.identifier isEqual:@"Breakfast Plot"]) {
-        mealKey = @"BreakfastData";
-    } else if ([plot.identifier isEqual:@"Lunch Plot"]) {
-        mealKey = @"LunchData";
-    } else if ([plot.identifier isEqual:@"Dinner Plot"]) {
-        mealKey = @"DinnerData";
-    } else if ([plot.identifier isEqual:@"Snack Plot"]) {
-        mealKey = @"SnackData";
-    }
-    
-    NSDecimalNumber *num = [[[self.mealsPlotData objectForKey:mealKey] objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+
+    NSDecimalNumber *num = [[_plotData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
+    NSLog(@"numberforplot %@", num);
     return num;
 }
 
@@ -375,3 +334,4 @@
 }
 
 @end
+
