@@ -15,7 +15,6 @@
 }
 
 -(IBAction)share:(id)sender;
-- (IBAction)dismissModal:(id) sender;
 -(IBAction)exportMeals:(id)sender;
 
 @end
