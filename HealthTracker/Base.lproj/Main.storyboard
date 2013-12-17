@@ -499,7 +499,7 @@
                             </button>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="oVo-uP-tdW"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIconFull" id="oVo-uP-tdW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPQ-rM-joJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -624,8 +624,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="graphIconFull" width="48" height="48"/>
+        <image name="graphIconFull" width="48" height="48"/>
         <image name="mealsIconWhiteFull" width="46" height="54"/>
+        <image name="settingsIconFull" width="50" height="50"/>
         <image name="sleepIconBlueFull" width="50" height="50"/>
+        <image name="tableIconFull" width="50" height="50"/>
         <image name="tableIconFull" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

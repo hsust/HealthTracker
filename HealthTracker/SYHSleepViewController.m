@@ -108,8 +108,6 @@
         [missingFields show];
         return;
     } else {
-    
-
         SYHSleepObject *newSleep = [[SYHSleepObject alloc] init];
         newSleep.startTime = self.sleepManager.startTime;
         newSleep.endTime = self.sleepManager.endTime;
