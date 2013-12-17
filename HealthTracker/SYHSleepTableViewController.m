@@ -32,7 +32,6 @@
     if (!_allSleep) {
         _allSleep = [[NSMutableArray alloc] initWithArray: [self.myDataManager allSleeps]];
     }
-    NSLog(@"getting allsleep, %@", _allSleep);
     return _allSleep;
 }
 
@@ -63,14 +62,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [self.allSleep count];
 }
@@ -83,9 +80,10 @@
     SYHSleepObject *currentSleep = [self.allSleep objectAtIndex:indexPath.row];
     
     NSTimeInterval interval = [currentSleep.endTime timeIntervalSinceDate:currentSleep.startTime];
-    double hours = interval / 3600;             // integer division to get the hours part
+    double hours = interval / 3600.0;             // integer division to get the hours part
     
-    NSDecimalNumber *time = [[NSDecimalNumber alloc] initWithDouble:hours];
+    NSDecimalNumber *time = [[NSDecimalNumber alloc] initWithDouble:round(hours*100)/100];
+
     
     UILabel *dateLabel = (id)[cell viewWithTag:1];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

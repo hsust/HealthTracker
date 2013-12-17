@@ -654,17 +654,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/MacOS,
+					"${PROJECT_DIR}/CorePlotHeaders",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CorePlotHeaders";
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/iOS,
-					/Users/bernadettehsu/CIS195/HealthTracker,
+					"${PROJECT_DIR}/CorePlotHeaders",
+					"${PROJECT_DIR}/",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -679,17 +679,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/MacOS,
+					"${PROJECT_DIR}/CorePlotHeaders",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthTracker/HealthTracker-Prefix.pch";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CorePlotHeaders";
 				INFOPLIST_FILE = "HealthTracker/HealthTracker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/bernadettehsu/Downloads/CorePlot_1.4/Binaries/iOS,
-					/Users/bernadettehsu/CIS195/HealthTracker,
+					"${PROJECT_DIR}/CorePlotHeaders",
+					"${PROJECT_DIR}/",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
