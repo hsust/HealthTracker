@@ -70,20 +70,7 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mealBackground.png"]]];
     
-    // Set meal type
-//    NSLog(@"%@", self.mealType);
-//    mealTypeLabel.text = [@"New " stringByAppendingString:self.mealType];
-    if (_mealType == MealTypeBreakfast){
-        mealTypeLabel.text = @"Breakfast";
-    } else if (self.mealType == MealTypeLunch){
-        mealTypeLabel.text = @"Lunch";
-    } else if (_mealType == MealTypeDinner){
-        mealTypeLabel.text = @"Dinner";
-    } else if (_mealType == MealTypeSnack){
-        mealTypeLabel.text = @"Snack";
-    } else {
-        NSLog(@"Error with matching meal type.");
-    }
+    [self setUpViewUIElements];
     
     // Date picker
     UIDatePicker *myDatePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 200, 320, 200)];
@@ -103,6 +90,29 @@
     [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
+}
+
+-(void) setUpViewUIElements
+{
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModal:)];
+    navItem.leftBarButtonItem = backButton;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(submitNewMeal:)];
+    navItem.rightBarButtonItem = doneButton;
+    
+    navItem.titleView.tintColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:230/255.0];
+    
+    // Set meal type/title
+    if (_mealType == MealTypeBreakfast){
+        navItem.title = @"BREAKFAST";
+    } else if (self.mealType == MealTypeLunch){
+        navItem.title = @"LUNCH";
+    } else if (_mealType == MealTypeDinner){
+        navItem.title = @"DINNER";
+    } else if (_mealType == MealTypeSnack){
+        navItem.title = @"SNACK";
+    } else {
+        NSLog(@"Error with matching meal type.");
+    }
 
 }
 

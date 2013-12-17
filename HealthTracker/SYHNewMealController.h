@@ -14,6 +14,8 @@
     IBOutlet UILabel *mealTypeLabel;
     IBOutlet UITextField *timeField;
     IBOutlet UITextField *mealField;
+    IBOutlet UINavigationBar *navBar;
+    IBOutlet UINavigationItem *navItem;
 }
 //@property (nonatomic) NSString * mealType;
 @property (nonatomic) SYHMealType mealType;

@@ -7,12 +7,34 @@
 //
 
 #import "SYHSleepTableViewController.h"
+#import "SYHSleepManager.h"
+#import "SYHDataManager.h"
 
 @interface SYHSleepTableViewController ()
+
+@property (nonatomic,strong) SYHDataManager *myDataManager;
+@property (nonatomic,strong) NSMutableArray *allSleep;
 
 @end
 
 @implementation SYHSleepTableViewController
+
+- (SYHDataManager *) myDataManager
+{
+    if (!_myDataManager) {
+        _myDataManager = [[SYHDataManager alloc] init];
+    }
+    return _myDataManager;
+}
+
+- (NSMutableArray *) allSleep
+{
+    if (!_allSleep) {
+        _allSleep = [[NSMutableArray alloc] initWithArray: [self.myDataManager allSleeps]];
+    }
+    NSLog(@"getting allsleep, %@", _allSleep);
+    return _allSleep;
+}
 
 - (IBAction)dismissModal:(UIBarButtonItem *) sender
 {
@@ -43,22 +65,38 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.allSleep count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"SleepCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    SYHSleepObject *currentSleep = [self.allSleep objectAtIndex:indexPath.row];
+    
+    NSTimeInterval interval = [currentSleep.endTime timeIntervalSinceDate:currentSleep.startTime];
+    double hours = interval / 3600;             // integer division to get the hours part
+    
+    NSDecimalNumber *time = [[NSDecimalNumber alloc] initWithDouble:hours];
+    
+    UILabel *dateLabel = (id)[cell viewWithTag:1];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yy"];
+    NSString *date =[dateFormatter stringFromDate:currentSleep.startTime];
+    dateLabel.text = [@"Date: " stringByAppendingString: date];
+    
+    
+    UILabel *timeLabel = (id)[cell viewWithTag:2];
+    NSString *label = [NSString stringWithFormat:@"%@", time];
+    timeLabel.text= [@"Duration: " stringByAppendingString:label];
     
     return cell;
 }

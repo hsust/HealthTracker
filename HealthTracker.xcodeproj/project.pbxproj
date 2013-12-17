@@ -29,6 +29,8 @@
 		CE4F1138185BB49A00E08D01 /* SYHSleepObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1137185BB49A00E08D01 /* SYHSleepObject.m */; };
 		CE4F113B185BB58F00E08D01 /* SleepModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1139185BB58F00E08D01 /* SleepModel.xcdatamodeld */; };
 		CE4F113E185BB5BB00E08D01 /* Sleeps.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4F113D185BB5BB00E08D01 /* Sleeps.m */; };
+		CE57F7B8185FFD59007863A5 /* SYHAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7B5185FFD59007863A5 /* SYHAlarmViewController.m */; };
+		CE57F7B9185FFD59007863A5 /* SYHShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57F7B7185FFD59007863A5 /* SYHShareViewController.m */; };
 		CE6BC4271842FD64000F4918 /* Meals.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BC4261842FD64000F4918 /* Meals.m */; };
 		CE6BC45318431567000F4918 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC45218431567000F4918 /* QuartzCore.framework */; };
 		CE6BC4F8184318D0000F4918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6BC4F7184318D0000F4918 /* Accelerate.framework */; };
@@ -85,6 +87,10 @@
 		CE4F113A185BB58F00E08D01 /* SleepModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SleepModel.xcdatamodel; sourceTree = "<group>"; };
 		CE4F113C185BB5BB00E08D01 /* Sleeps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sleeps.h; sourceTree = "<group>"; };
 		CE4F113D185BB5BB00E08D01 /* Sleeps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sleeps.m; sourceTree = "<group>"; };
+		CE57F7B4185FFD59007863A5 /* SYHAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SYHAlarmViewController.h; path = ../SYHAlarmViewController.h; sourceTree = "<group>"; };
+		CE57F7B5185FFD59007863A5 /* SYHAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SYHAlarmViewController.m; path = ../SYHAlarmViewController.m; sourceTree = "<group>"; };
+		CE57F7B6185FFD59007863A5 /* SYHShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SYHShareViewController.h; path = ../SYHShareViewController.h; sourceTree = "<group>"; };
+		CE57F7B7185FFD59007863A5 /* SYHShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SYHShareViewController.m; path = ../SYHShareViewController.m; sourceTree = "<group>"; };
 		CE6BC4251842FD64000F4918 /* Meals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meals.h; sourceTree = "<group>"; };
 		CE6BC4261842FD64000F4918 /* Meals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meals.m; sourceTree = "<group>"; };
 		CE6BC45018431433000F4918 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Downloads/CorePlot_1.4/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
@@ -276,6 +282,10 @@
 				CE4F112E185BA75F00E08D01 /* SYHSleepViewController.m */,
 				CE4F1133185BB1A700E08D01 /* SYHSleepTableViewController.h */,
 				CE4F1134185BB1A700E08D01 /* SYHSleepTableViewController.m */,
+				CE57F7B4185FFD59007863A5 /* SYHAlarmViewController.h */,
+				CE57F7B5185FFD59007863A5 /* SYHAlarmViewController.m */,
+				CE57F7B6185FFD59007863A5 /* SYHShareViewController.h */,
+				CE57F7B7185FFD59007863A5 /* SYHShareViewController.m */,
 				1B0151E01831BDA900CF9F08 /* Main.storyboard */,
 				1B0151E91831BDAA00CF9F08 /* Images.xcassets */,
 				1B0151D51831BDA900CF9F08 /* Supporting Files */,
@@ -497,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE4F1132185BA8EE00E08D01 /* SYHSleepManager.m in Sources */,
+				CE57F7B9185FFD59007863A5 /* SYHShareViewController.m in Sources */,
 				CE79C803184962D10040B670 /* SYHMealsGraphViewController.m in Sources */,
 				1B0151DB1831BDA900CF9F08 /* main.m in Sources */,
 				CE4F1138185BB49A00E08D01 /* SYHSleepObject.m in Sources */,
@@ -505,6 +516,7 @@
 				CE9EA0D81831C606004177BE /* SYHNewMealController.m in Sources */,
 				CE4996C9183B32500011CB6A /* SYHMealsTableViewController.m in Sources */,
 				CE9EA0DE1831D2DD004177BE /* SYHDataManager.m in Sources */,
+				CE57F7B8185FFD59007863A5 /* SYHAlarmViewController.m in Sources */,
 				1B0151DF1831BDA900CF9F08 /* SYHAppDelegate.m in Sources */,
 				CE4F112F185BA75F00E08D01 /* SYHSleepViewController.m in Sources */,
 				CE4F113B185BB58F00E08D01 /* SleepModel.xcdatamodeld in Sources */,
