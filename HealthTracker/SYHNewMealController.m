@@ -97,23 +97,26 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModal:)];
     navItem.leftBarButtonItem = backButton;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(submitNewMeal:)];
+    [doneButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17]}
+                                     forState:UIControlStateNormal];
     navItem.rightBarButtonItem = doneButton;
-    
-    navItem.titleView.tintColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:230/255.0];
+
+    UIColor *titleColor = [UIColor colorWithRed:29/255.0 green:98/255.0 blue:240/255.0 alpha:1.0];
+    navBar.titleTextAttributes = [NSDictionary dictionaryWithObject:titleColor forKey:NSForegroundColorAttributeName];
     
     // Set meal type/title
     if (_mealType == MealTypeBreakfast){
-        navItem.title = @"BREAKFAST";
+        navItem.title = @"Breakfast";
     } else if (self.mealType == MealTypeLunch){
-        navItem.title = @"LUNCH";
+        navItem.title = @"Lunch";
     } else if (_mealType == MealTypeDinner){
-        navItem.title = @"DINNER";
+        navItem.title = @"Dinner";
     } else if (_mealType == MealTypeSnack){
-        navItem.title = @"SNACK";
+        navItem.title = @"Snack";
     } else {
         NSLog(@"Error with matching meal type.");
     }
-
+    
 }
 
 - (void)pickerChanged:(id)sender
